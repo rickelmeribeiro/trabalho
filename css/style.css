@@ -1,0 +1,210 @@
+.button_sair {
+    width: 9em;
+    height: 3em;
+    border-radius: 30em;
+    font-size: 15px;
+    font-family: inherit;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.button_sair::before {
+    content: '';
+    width: 0;
+    height: 3em;
+    border-radius: 30em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(to right, red 0%, darkred 100%);
+    transition: .5s ease;
+    display: block;
+    z-index: -1;
+}
+
+.button_sair:hover::before {
+    width: 9em;
+}
+.button_sair{
+    background-color: darkred;
+}
+
+.button_sair:hover {
+    color: white !important;
+}
+
+.bottom {
+    position: absolute;
+    bottom: 0;
+    width: inherit;
+}
+
+.sidemenu {
+    width: 20px;
+    transform: all 0.7s ease;
+    backdrop-filter: saturate(180%) blur(10px);
+    -webkit-backdrop-filter: saturate(180%) blur(10px);
+
+    .toggler {
+        display: inline-block;
+        width: 46px;
+        margin-bottom: 0.5rem;
+    }
+
+    .container {
+    / / overflow-y: scroll;
+    / / overflow-x: hidden;
+    }
+
+    .item {
+        border: 2px solid transparent;
+
+        &:hover {
+            background-color: $ arcylic-hover;
+        / / border: 2 px solid map-get($ light-theme-colors, BaseLow);
+        }
+    }
+
+    i {
+        color: map-get($ light-theme-colors, BaseHigh);
+        padding: 16px;
+        line-height: 21px;
+        width: 21px;
+        height: 21px;
+    }
+
+    span {
+        display: none;
+        color: map-get($ light-theme-colors, BaseHigh);
+    }
+}
+
+.btnbonitoo{
+    background-color: #323C50 !important;
+    color: white !important;
+}
+.btnbonitoo:hover{
+    color: black !important;
+    background-color: white !important;
+}
+
+.closebtn {
+    float: right;
+    display: none;
+}
+
+.fontegrande{
+    font-size: 30px;
+}
+.pointerCursor{
+    cursor: pointer;
+}
+
+.hoverzinho:hover{
+    background-color: white;
+    color: black;
+    transition: 0.9s;
+    box-shadow: 2px 2px 2px 2px white;
+}
+
+.h1 {
+    font-size:3em;
+    font-weight: 300;
+    line-height:1em;
+    text-align: center;
+    color: #4DC3FA;
+}
+
+.h2 {
+    font-size:1em;
+    font-weight: 300;
+    text-align: center;
+    display: block;
+    line-height:1em;
+    padding-bottom: 2em;
+    color: #FB667A;
+}
+
+.h2 a {
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #FB667A;
+    text-decoration: none;
+}
+
+.blue { color: #185875; }
+.yellow { color: #FFF842; }
+
+.containers th h1 {
+    font-weight: bold;
+    font-size: 1em;
+    text-align: left;
+    color: #185875;
+}
+
+.containers td {
+    font-weight: normal;
+    font-size: 1em;
+    -webkit-box-shadow: 0 2px 2px -2px #0E1119;
+    -moz-box-shadow: 0 2px 2px -2px #0E1119;
+    box-shadow: 0 2px 2px -2px #0E1119;
+}
+
+.containers {
+    text-align: left;
+    overflow: hidden;
+    width: 80%;
+    margin: 0 auto;
+    display: table;
+    padding: 0 0 8em 0;
+}
+
+.containers td, .containers th {
+    padding-bottom: 2%;
+    padding-top: 2%;
+    padding-left:2%;
+}
+
+/* Background-color of the odd rows */
+.containers tr:nth-child(odd) {
+    background-color: #323C50;
+}
+
+/* Background-color of the even rows */
+.containers tr:nth-child(even) {
+    background-color: #2C3446;
+}
+
+.containers th {
+    background-color: #1F2739;
+}
+
+.containers td:first-child { color: #FB667A; }
+
+.containers tr:hover {
+    background-color: #464A52;
+    -webkit-box-shadow: 0 6px 6px -6px #0E1119;
+    -moz-box-shadow: 0 6px 6px -6px #0E1119;
+    box-shadow: 0 6px 6px -6px #0E1119;
+}
+
+.containers td:hover {
+    background-color: #FFF842;
+    color: #403E10;
+    font-weight: bold;
+
+    box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
+    transform: translate3d(6px, -6px, 0);
+
+    transition-delay: 0s;
+    transition-duration: 0.4s;
+    transition-property: all;
+    transition-timing-function: line;
+}
+
+@media (max-width: 800px) {
+    .containers td:nth-child(4),
+    .containers th:nth-child(4) { display: none; }
+}
