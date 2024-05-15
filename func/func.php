@@ -110,6 +110,7 @@ function listarTabelaInnerJoinOrdenada($campos, $tabela1, $tabela2, $id1, $id2, 
     }
     $conn = null;
 }
+
 function listarTabelaTurmaGrafico($id)
 {
     $conn = conectar();
@@ -634,6 +635,7 @@ function dataHoraGlobal($data, $hora = 'S', $pais = 'BR')
     }
     return $data;
 }
+
 function dataHoraGlobalGAMBIARRA($data)
 {
     $data = new DateTime($data);
@@ -642,6 +644,7 @@ function dataHoraGlobalGAMBIARRA($data)
 
 
 }
+
 function converterNumComVirgula($numm)
 {
     $numero = $numm;
@@ -721,5 +724,237 @@ function listarGeral($campos, $tabela)
         $conn = null;
         echo 'Exception -> ' . $e->getMessage();
         return false;
+    }
+}
+
+function addAdm($nome, $senha, $email, $cpf)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+
+
+        $stmt = $conn->prepare("INSERT INTO adm (nome, senha, email, cpf) VALUES (?, ?, ?, ?)");
+        $stmt->execute([$nome, $senha, $email, $cpf]);
+        $conn->commit();
+        if ($stmt->rowCount() > 0) {
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        }
+        return 'Vazio';
+    } catch (PDOException $e) {
+        echo 'Exception -> ' . $e->getMessage();
+        $conn->rollback();
+        return $e->getMessage();
+    } finally {
+        $conn = null;
+    }
+}
+
+function addContato($nome, $numero)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+
+
+        $stmt = $conn->prepare("INSERT INTO contato (nome, numero) VALUES (?, ?)");
+        $stmt->execute([$nome, $numero]);
+        $conn->commit();
+        if ($stmt->rowCount() > 0) {
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        }
+        return 'Vazio';
+    } catch (PDOException $e) {
+        echo 'Exception -> ' . $e->getMessage();
+        $conn->rollback();
+        return $e->getMessage();
+    } finally {
+        $conn = null;
+    }
+}
+
+function addProduto($nome, $valor, $fotoName)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+
+
+        $stmt = $conn->prepare("INSERT INTO produto (nome, valor, foto) VALUES (?, ?, ?)");
+        $stmt->execute([$nome, $valor, $fotoName]);
+        $conn->commit();
+        if ($stmt->rowCount() > 0) {
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        }
+        return 'Vazio';
+    } catch (PDOException $e) {
+        echo 'Exception -> ' . $e->getMessage();
+        $conn->rollback();
+        return $e->getMessage();
+    } finally {
+        $conn = null;
+    }
+}
+
+function editAdm($nome, $senha, $email, $cpf, $idadm)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+
+
+        $sql = "UPDATE adm SET nome = :nome, senha = :senha, email = :email, cpf = :cpf WHERE idadm = :idadm";
+        $stmt = $conn->prepare($sql);
+
+
+        $stmt->bindParam(':nome', $nome);
+        $stmt->bindParam(':senha', $senha);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':cpf', $cpf);
+        $stmt->bindParam(':idadm', $idadm);
+
+        $stmt->execute();
+        $conn->commit();
+
+        return $stmt->rowCount();
+
+    } catch (PDOException $e) {
+        $conn->rollback();
+        return 'Exception -> ' . $e->getMessage();
+    } finally {
+        $conn = null;
+    }
+}
+
+function editContato($nome, $numero, $idcontato)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+
+
+        $sql = "UPDATE contato SET nome = :nome, numero = :numero WHERE idcontato = :idcontato";
+        $stmt = $conn->prepare($sql);
+
+
+        $stmt->bindParam(':nome', $nome);
+        $stmt->bindParam(':numero', $numero);
+        $stmt->bindParam(':idcontato', $idcontato);
+
+        $stmt->execute();
+        $conn->commit();
+
+        return $stmt->rowCount();
+
+    } catch (PDOException $e) {
+        $conn->rollback();
+        return 'Exception -> ' . $e->getMessage();
+    } finally {
+        $conn = null;
+    }
+}
+
+function editProduto($nome, $valor, $fotoName, $idproduto)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+
+
+        $sql = "UPDATE produto SET nome = :nome, valor = :valor, foto = :foto WHERE idproduto = :idproduto";
+        $stmt = $conn->prepare($sql);
+
+
+        $stmt->bindParam(':nome', $nome);
+        $stmt->bindParam(':valor', $valor);
+        $stmt->bindParam(':foto', $fotoName);
+        $stmt->bindParam(':idproduto', $idproduto);
+
+        $stmt->execute();
+        $conn->commit();
+
+        return $stmt->rowCount();
+
+    } catch (PDOException $e) {
+        $conn->rollback();
+        return 'Exception -> ' . $e->getMessage();
+    } finally {
+        $conn = null;
+    }
+}
+
+function excAdm($id)
+{
+    $conn = conectar();
+    try {
+
+        $conn->beginTransaction();
+
+        $stmt = $conn->prepare("DELETE FROM adm WHERE idadm = :idadm");
+        $stmt->bindParam(':idadm', $id);
+        $stmt->execute();
+        $conn->commit();
+
+        if ($stmt->rowCount() > 0) {
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        } else {
+            return 'Vazio';
+        }
+
+    } catch (PDOException $e) {
+        $conn->rollback();
+        return 'Exception -> ' . $e->getMessage();
+    } finally {
+        $conn = null;
+    }
+}
+function excProduto($id)
+{
+    $conn = conectar();
+    try {
+
+        $conn->beginTransaction();
+
+        $stmt = $conn->prepare("DELETE FROM produto WHERE idproduto = :idproduto");
+        $stmt->bindParam(':idproduto', $id);
+        $stmt->execute();
+        $conn->commit();
+
+        if ($stmt->rowCount() > 0) {
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        } else {
+            return 'Vazio';
+        }
+
+    } catch (PDOException $e) {
+        $conn->rollback();
+        return 'Exception -> ' . $e->getMessage();
+    } finally {
+        $conn = null;
+    }
+}
+function excContato($id)
+{
+    $conn = conectar();
+    try {
+
+        $conn->beginTransaction();
+
+        $stmt = $conn->prepare("DELETE FROM contato WHERE idcontato = :idcontato");
+        $stmt->bindParam(':idcontato', $id);
+        $stmt->execute();
+        $conn->commit();
+
+        if ($stmt->rowCount() > 0) {
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        } else {
+            return 'Vazio';
+        }
+
+    } catch (PDOException $e) {
+        $conn->rollback();
+        return 'Exception -> ' . $e->getMessage();
+    } finally {
+        $conn = null;
     }
 }

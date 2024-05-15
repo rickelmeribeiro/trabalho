@@ -32,6 +32,12 @@ function abrirModalJsCliente(id, inID, nomeModal, abrirModal = 'A', addEditDel, 
             const form = event.target;
             const formData = new FormData(form);
 
+            const fileInput = document.getElementById('foto_produto');
+            formData.append('foto', fileInput.files[0]);
+
+            const fileInput2 = document.getElementById('foto_produto_edit');
+            formData.append('foto', fileInput2.files[0]);
+
             formData.append('controle', `${addEditDel}`)
             if (inID !== 'nao') {
                 formData.append('id', `${id}`)
@@ -44,24 +50,24 @@ function abrirModalJsCliente(id, inID, nomeModal, abrirModal = 'A', addEditDel, 
                     console.log(data)
                     if (data.success) {
                         ModalInstacia.hide();
-                        // location.reload()
-                        // carregaMe    nu("listarPessoa");
-                        // location.reload()
+                        location.reload()
+                        carregaMenu("listarPessoa");
+                        location.reload()
                         ModalInstacia.hide();
                     } else {
                         ModalInstacia.hide();
-                        // location.reload()
-                        // location.reload()
+                        location.reload()
+                        location.reload()
                         ModalInstacia.hide();
                         ModalInstacia.hide();
-                        // carregaMenu("listarPessoa");
+                        carregaMenu("listarPessoa");
                     }
                 })
                 .catch(error => {
                     ModalInstacia.hide();
-                    // location.reload()
+                    location.reload()
                     ModalInstacia.hide();
-                    // carregaMenu("listarPessoa");
+                    carregaMenu("listarPessoa");
                     console.error('Erro na requisição:', error);
                 });
 
@@ -71,7 +77,7 @@ function abrirModalJsCliente(id, inID, nomeModal, abrirModal = 'A', addEditDel, 
 
 
     } else {
-        // location.reload()
+        location.reload()
         ModalInstacia.hide();
     }
 
@@ -95,6 +101,17 @@ function fMasc(objeto,mascara) {
 function fMascEx() {
     obj.value=masc(obj.value)
 }
+
+var behavior = function (val) {
+        return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+    },
+    options = {
+        onKeyPress: function (val, e, field, options) {
+            field.mask(behavior.apply({}, arguments), options);
+        }
+    };
+
+$('.phone').mask(behavior, options);
 
 function mCPF(cpf_adm){
     cpf_adm=cpf_adm.replace(/\D/g,"")

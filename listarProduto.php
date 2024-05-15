@@ -23,8 +23,9 @@ include_once "./func/func.php";
             <p class="fs-3" style="text-decoration-line: underline">#Produto</p>
 
             <div class="d-flex float-end align-items-center">
-                <button class="btn btn-md btnbonitoo botaoAddEvento"
-                        onclick="abrirModalJsCliente('nao','nao','NOMEMODALADD','A','NOMEDOCONTROLE','NOMEDOFORMULARIO')">
+                <button class="btn btn-md btnbonitoo botaoAddEvento" data-bs-toggle="modal"
+                        data-bs-target="#ModalAddProduto"
+                        onclick="abrirModalJsCliente('nao','nao','ModalAddProduto','A','addProduto','frmAddProduto')">
                     Cadastrar Produto
                 </button>
             </div>
@@ -49,29 +50,29 @@ include_once "./func/func.php";
                     $id = $itemProduto->idproduto;
                     $nome = $itemProduto->nome;
                     $valor = $itemProduto->valor;
-                    $foto = $itemProduto->foto;
+                    $fotoName = $itemProduto->foto;
                     ?>
                     <tr>
                         <th scope="row"><?php echo $id ?></th>
                         <td><?php echo $nome ?></td>
-                        <td><?php echo $valor ?></td>
-                        <td><?php echo $foto ?></td>
+                        <td><?php echo $valor?></td>
+                        <td><img src="./img/<?php echo $fotoName?>" alt="<?php echo $nome?>" width="50%"> </td>
                         <td>
                             <form>
                                 <div class="btn-group btn-sm" role="group" aria-label="Basic example">
-                                    <input type="hidden" id="IDDOINPUT" name="IDDOINPUT"
+                                    <input type="hidden" id="id" name="id"
                                            value="<?php echo $id ?>">
                                     <button type="button" class="btn btn-primary rounded-1" data-bs-toggle="modal"
-                                            data-bs-target="#NOMEMODAL"
-                                            onclick="abrirModalJsCliente('<?php echo $id ?>','IDDOINPUT','NOMEMODAL','A','NOMECONTROLE','NOMEFORMULARIO')">
+                                            data-bs-target="#ModalEditProduto"
+                                            onclick="abrirModalJsCliente('<?php echo $id ?>','id','ModalEditProduto','A','editProduto','frmEditProduto')">
                                         <span class="mdi mdi-database-edit"></span>
                                     </button>
                             </form>
-                            <form action="PAGINADEEXCLUSAO" method="post">
-                                <input type="hidden" name="IDDOINPUT" id="IDDOINPUT"
+                            <form action="excProduto.php" method="post">
+                                <input type="hidden" name="id" id="id"
                                        value="<?php echo $id ?>">
                                 <button type="submit"
-                                        onclick="abrirModalJsCliente('<?php echo $id ?>','IDDOINPUT','nao','NOMECONTROLE', 'nao')"
+                                        onclick="abrirModalJsCliente('<?php echo $id ?>','id','nao','excProduto', 'nao')"
                                         class="btn btn-danger rounded-1"><span
                                         class="mdi mdi-database-remove"></span></button>
                             </form>

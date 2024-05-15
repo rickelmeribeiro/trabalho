@@ -59,19 +59,19 @@ include_once "./func/func.php";
                     <td>
                         <form>
                             <div class="btn-group btn-sm" role="group" aria-label="Basic example">
-                                <input type="hidden" id="idadm" name="idadm"
+                                <input type="hidden" id="id" name="id"
                                        value="<?php echo $idadm ?>">
                                 <button type="button" class="btn btn-primary rounded-1" data-bs-toggle="modal"
                                         data-bs-target="#ModalEditAdm"
-                                        onclick="abrirModalJsCliente('<?php echo $idadm ?>','idadm','ModalEditAdm','A','editAdm','frmEditAdm')">
+                                        onclick="abrirModalJsCliente('<?php echo $idadm ?>','id','ModalEditAdm','A','editAdm','frmEditAdm')">
                                     <span class="mdi mdi-database-edit"></span>
                                 </button>
                         </form>
-                        <form action="PAGINADEEXCLUSAO" method="post">
-                            <input type="hidden" name="IDDOINPUT" id="IDDOINPUT"
+                        <form action="excAdm.php" method="post">
+                            <input type="hidden" name="id" id="id"
                                    value="<?php echo $idadm ?>">
                             <button type="submit"
-                                    onclick="abrirModalJsCliente('<?php echo $idadm ?>','IDDOINPUT','nao','NOMECONTROLE', 'nao')"
+                                    onclick="abrirModalJsCliente('<?php echo $idadm ?>','id','nao','excAdm', 'nao')"
                                     class="btn btn-danger rounded-1"><span
                                         class="mdi mdi-database-remove"></span></button>
                         </form>

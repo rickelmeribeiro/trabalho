@@ -26,9 +26,5 @@ if (!empty($controle) && isset($controle)) {
         include_once 'editContato.php';
     } else if ($controle == 'excContato') {
         include_once 'excContato.php';
-    } else {
-        include_once 'bemvindo.php';
     }
-} else {
-    include_once 'bemvindo.php';
 }

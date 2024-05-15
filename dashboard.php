@@ -16,6 +16,9 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+    <script type='text/javascript' src='//code.jquery.com/jquery-compat-git.js'></script>
+    <script type='text/javascript' src='//igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js'></script>
 </head>
 <body>
 <div class="row">
@@ -30,8 +33,8 @@
     <div class="col-2 bg-dark vh-100">
         <div class="container-fluid">
             <div class="card bg-dark text-white" style="width: 18rem;border: transparent">
-                <div class="mt-3 mb-2 value fontegrande pointerCursor hoverzinho" onclick="carregaMenu('listarMenu')">
-                    <i class="	fas fa-braille"></i>
+                <div class="mt-3 mb-2 value fontegrande pointerCursor hoverzinho" onclick="redireciona('listarMenu.php')">
+                    <i class="fas fa-braille"></i>
                     MENU
                 </div>
                 <div class="mt-3 mb-2 value fontegrande pointerCursor hoverzinho" onclick="carregaMenu('listarBanner')">
@@ -56,9 +59,9 @@
 
 <!-- MODAL ADICIONAR ADM -->
 <div class="modal fade" id="ModalAddAdm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered ">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-dark text-white">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar Administrador</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="redireciona('dashboard.php')" aria-label="Close"></button>
             </div>
@@ -66,23 +69,23 @@
                 <form method="post" name="frmAddAdm" id="frmAddAdm" action="#">
                     <div class="mb-3">
                         <label for="nome_adm" class="form-label">Nome:</label>
-                        <input type="text" class="form-control" id="nome_adm" name="nome_adm"
-                               aria-describedby="emailHelp">
+                        <input autocomplete="off" type="text" class="form-control" id="nome_adm" name="nome_adm"
+                               aria-describedby="emailHelp" required>
                     </div>
                     <div class="mb-3">
                         <label for="senha_adm" class="form-label">Senha:</label>
-                        <input type="password" class="form-control" id="senha_adm" name="senha_adm">
+                        <input autocomplete="off" type="password" class="form-control" id="senha_adm" name="senha_adm" required>
                     </div>
                     <div class="mb-3">
                         <label for="email_adm" class="form-label">Email:</label>
-                        <input type="email" class="form-control" id="email_adm" name="email_adm">
+                        <input autocomplete="off" type="email" class="form-control" id="email_adm" name="email_adm" required>
                     </div>
                     <div class="mb-3">
                         <label for="cpf_adm" class="form-label">CPF:</label>
-                        <input type="text" onkeydown="fMasc( this, mCPF );" class="form-control cpf_adm" id="cpf_adm" name="cpf_adm" maxlength="14">
+                        <input autocomplete="off" type="text" onkeydown="fMasc( this, mCPF );" class="form-control cpf_adm" id="cpf_adm" name="cpf_adm" maxlength="14" required>
                     </div>
-                    <button type="submit" onclick="alert('Dados Adicionados com Sucesso!');" class="btn btn-primary">Adicionar no Banco
-                    </button>
+                        <button type="submit"  class="btn bg-dark text-white">Adicionar no Banco
+                        </button>
                 </form>
             </div>
 
@@ -93,32 +96,32 @@
 
 <!-- MODAL EDITAR ADM -->
 <div class="modal fade" id="ModalEditAdm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-dark text-white">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Administrador</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="redireciona('dashboard.php')" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form method="post" name="frmEditAdm" id="frmEditAdm" action="#">
                     <div class="mb-3">
-                        <label for="nome_adm" class="form-label">Nome:</label>
-                        <input type="text" class="form-control" id="nome_adm" name="nome_adm"
-                               aria-describedby="emailHelp">
+                        <label for="nome_adm_edit" class="form-label">Nome:</label>
+                        <input autocomplete="off" type="text" class="form-control" id="nome_adm_edit" name="nome_adm_edit"
+                               aria-describedby="emailHelp" required>
                     </div>
                     <div class="mb-3">
-                        <label for="senha_adm" class="form-label">Senha:</label>
-                        <input type="password" class="form-control" id="senha_adm" name="senha_adm">
+                        <label for="senha_adm_edit" class="form-label">Senha:</label>
+                        <input autocomplete="off" type="password" class="form-control" id="senha_adm_edit" name="senha_adm_edit" required>
                     </div>
                     <div class="mb-3">
-                        <label for="email_adm" class="form-label">Email:</label>
-                        <input type="email" class="form-control" id="email_adm" name="email_adm">
+                        <label for="email_adm_edit" class="form-label">Email:</label>
+                        <input autocomplete="off" type="email" class="form-control" id="email_adm_edit" name="email_adm_edit" required>
                     </div>
                     <div class="mb-3">
-                        <label for="cpf_adm" class="form-label">CPF:</label>
-                        <input type="text" onkeydown="fMasc( this, mCPF );" class="form-control" id="cpf_adm" name="cpf_adm" maxlength="14">
+                        <label for="cpf_adm_edit" class="form-label">CPF:</label>
+                        <input autocomplete="off" type="text" onkeydown="fMasc( this, mCPF );" class="form-control" id="cpf_adm_edit" name="cpf_adm_edit" maxlength="14" required>
                     </div>
-                    <button type="submit" onclick="alert('Dados Adicionados com Sucesso!');" class="btn btn-primary">Editar no Banco
+                    <button type="submit"  class="btn bg-dark text-white">Editar no Banco
                     </button>
                 </form>
             </div>
@@ -127,7 +130,132 @@
     </div>
 </div>
 <!-- MODAL FIM EDITAR ADM -->
+
+<!-- MODAL ADICIONAR PRODUTO -->
+<div class="modal fade" id="ModalAddProduto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Adicionar Produto</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="redireciona('dashboard.php')" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" name="frmAddProduto" id="frmAddProduto" action="#">
+                    <div class="mb-3">
+                        <label for="nome_produto" class="form-label">Nome:</label>
+                        <input autocomplete="off" type="text" class="form-control" id="nome_produto" name="nome_produto"
+                               aria-describedby="emailHelp" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="valor_produto" class="form-label">Valor:</label>
+                        <input autocomplete="off" type="text" onkeyup="atacado(this);" class="form-control" id="valor_produto" name="valor_produto" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="foto_produto" class="form-label">Imagem:</label>
+                        <input autocomplete="off" type="file" class="form-control" id="foto_produto" name="foto_produto" required>
+                    </div>
+                    <button type="submit"  class="btn bg-dark text-white">Adicionar no Banco
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIM MODAL ADICIONAR PRODUTO -->
+
+<!-- MODAL EDITAR PRODUTO -->
+<div class="modal fade" id="ModalEditProduto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Produto</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="redireciona('dashboard.php')" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" name="frmEditProduto" id="frmEditProduto" action="#">
+                    <div class="mb-3">
+                        <label for="nome_produto_edit" class="form-label">Nome:</label>
+                        <input autocomplete="off" type="text" class="form-control" id="nome_produto_edit" name="nome_produto_edit"
+                               aria-describedby="emailHelp" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="valor_produto_edit" class="form-label">Valor:</label>
+                        <input autocomplete="off" type="text" onkeyup="atacado(this);" class="form-control" id="valor_produto_edit" name="valor_produto_edit" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="foto_produto_edit" class="form-label">Imagem:</label>
+                        <input autocomplete="off" type="file" class="form-control" id="foto_produto_edit" name="foto_produto_edit" required>
+                    </div>
+                    <button type="submit"  class="btn bg-dark text-white">Editar no Banco
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- FIM MODAL EDITAR PRODUTO -->
+
+<!-- MODAL ADICIONAR CONTATO -->
+<div class="modal fade" id="ModalAddContato" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Adicionar Contato</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="redireciona('dashboard.php')" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" name="frmAddContato" id="frmAddContato" action="#">
+                    <div class="mb-3">
+                        <label for="nome_contato" class="form-label">Nome:</label>
+                        <input autocomplete="off" type="text" class="form-control" id="nome_contato" name="nome_contato"
+                               aria-describedby="emailHelp" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="numero_contato" class="form-label">Número:</label>
+                        <input autocomplete="off" type="text" class="form-control phone" id="numero_contato" name="numero_contato" maxlength="13" required>
+                    </div>
+                    <button type="submit"  class="btn bg-dark text-white">Adicionar no Banco
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- FIM MODAL ADICIONAR CONTATO -->
+
+<!-- MODAL EDITAR CONTATO -->
+<div class="modal fade" id="ModalEditContato" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Contato</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="redireciona('dashboard.php')" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" name="frmEditContato" id="frmEditContato" action="#">
+                    <div class="mb-3">
+                        <label for="nome_contato_edit" class="form-label">Nome:</label>
+                        <input autocomplete="off" type="text" class="form-control" id="nome_contato_edit" name="nome_contato_edit"
+                               aria-describedby="emailHelp" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="numero_contato_edit" class="form-label">Número:</label>
+                        <input autocomplete="off" type="text" class="form-control phone" id="numero_contato_edit" name="numero_contato_edit" maxlength="13" required>
+                    </div>
+                    <button type="submit"  class="btn bg-dark text-white">Editar no Banco
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div><!-- FIM MODAL EDITAR CONTATO -->
 <script src="./func/func.js"></script>
+<script src="./func/mascara.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
