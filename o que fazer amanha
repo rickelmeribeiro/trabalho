@@ -1,10 +1,6 @@
-falta mexer nas modais de produto e contato.
-precisa saber o que é a aba BANNER.
-precisa fazer o CRUD de ADM, PRODUTO e CONTATO.
+Colocar banner no menu, e na aba banner colocar uma forma de alterar as imagens.
 precisa criar a aba de menu.
-remover o alert das modais.
 colocar um icone de imagem na navbar.
 adicionar a função de importar imagens para adicionar os produtos.
 colocar os placeholders nas modais.
 colocar os maxlenght nas senhas das modais.
-por ultimo, estilizar as modais.
