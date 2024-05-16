@@ -83,23 +83,24 @@ function abrirModalJsCliente(id, inID, nomeModal, abrirModal = 'A', addEditDel, 
 
 }
 
-function ValidaCPF(){
-    var RegraValida=document.getElementById("cpf_adm").value;
+function ValidaCPF() {
+    var RegraValida = document.getElementById("cpf_adm").value;
     var cpfValido = /^(([0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2})|([0-9]{11}))$/;
-    if (cpfValido.test(RegraValida) === true)	{
+    if (cpfValido.test(RegraValida) === true) {
         console.log("CPF Válido");
-    } else	{
+    } else {
         console.log("CPF Inválido");
     }
 }
-function fMasc(objeto,mascara) {
-    obj=objeto
-    masc=mascara
-    setTimeout("fMascEx()",1)
+
+function fMasc(objeto, mascara) {
+    obj = objeto
+    masc = mascara
+    setTimeout("fMascEx()", 1)
 }
 
 function fMascEx() {
-    obj.value=masc(obj.value)
+    obj.value = masc(obj.value)
 }
 
 var behavior = function (val) {
@@ -113,11 +114,11 @@ var behavior = function (val) {
 
 $('.phone').mask(behavior, options);
 
-function mCPF(cpf_adm){
-    cpf_adm=cpf_adm.replace(/\D/g,"")
-    cpf_adm=cpf_adm.replace(/(\d{3})(\d)/,"$1.$2")
-    cpf_adm=cpf_adm.replace(/(\d{3})(\d)/,"$1.$2")
-    cpf_adm=cpf_adm.replace(/(\d{3})(\d{1,2})$/,"$1-$2")
+function mCPF(cpf_adm) {
+    cpf_adm = cpf_adm.replace(/\D/g, "")
+    cpf_adm = cpf_adm.replace(/(\d{3})(\d)/, "$1.$2")
+    cpf_adm = cpf_adm.replace(/(\d{3})(\d)/, "$1.$2")
+    cpf_adm = cpf_adm.replace(/(\d{3})(\d{1,2})$/, "$1-$2")
     return cpf_adm
 }
 
@@ -201,7 +202,6 @@ if (document.getElementById("cpf_adm")) {
 // }
 
 
-
 function mostrarsenha() {
     var inputPass = document.getElementById('senha');
     var btnShowPass = document.getElementById('btn-senha');
@@ -209,8 +209,7 @@ function mostrarsenha() {
     if (inputPass.type === 'password') {
         inputPass.setAttribute('type', 'text');
         btnShowPass.classList.replace('bi-eye-slash', 'bi-eye');
-    }
-    else {
+    } else {
         inputPass.setAttribute('type', 'password');
         btnShowPass.classList.replace('bi-eye', 'bi-eye-slash');
     }
@@ -223,22 +222,22 @@ function mostrarsenhaalterar() {
     if (inputPass.type === 'password') {
         inputPass.setAttribute('type', 'text');
         btnShowPass.classList.replace('bi-eye-slash', 'bi-eye');
-    }
-    else {
+    } else {
         inputPass.setAttribute('type', 'password');
         btnShowPass.classList.replace('bi-eye', 'bi-eye-slash');
     }
 }
 
 
-function Cadastrar(){
+function Cadastrar() {
     alert("Dados Cadastrados com Sucesso!");
 }
 
-function Editar(){
+function Editar() {
     alert("Dados Editados com Sucesso!");
 }
-function Excluir(){
+
+function Excluir() {
     alert("Dados Excluídos com Sucesso!");
 }
 
@@ -249,20 +248,20 @@ function atacado(i) {
     var separador_decimal = ',';
 
     var decimais_ele = Math.pow(10, decimais);
-    var thousand_separator = '$1'+separador_milhar;
-    var v = i.value.replace(/\D/g,'');
-    v = (v/decimais_ele).toFixed(decimais) + '';
+    var thousand_separator = '$1' + separador_milhar;
+    var v = i.value.replace(/\D/g, '');
+    v = (v / decimais_ele).toFixed(decimais) + '';
     var splits = v.split(".");
     var p_parte = splits[0].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, thousand_separator);
-    (typeof splits[1] === "undefined") ? i.value = p_parte : i.value = p_parte+separador_decimal+splits[1];
+    (typeof splits[1] === "undefined") ? i.value = p_parte : i.value = p_parte + separador_decimal + splits[1];
 
 }
 
 var ALERT_TITLE = "Atualização Feita...";
 var ALERT_BUTTON_TEXT = "Fechar";
 
-if(document.getElementById) {
-    window.alert = function(txt) {
+if (document.getElementById) {
+    window.alert = function (txt) {
         createCustomAlert(txt);
     }
 }
@@ -270,7 +269,7 @@ if(document.getElementById) {
 function createCustomAlert(txt) {
     d = document;
 
-    if(d.getElementById("modalContainer")) return;
+    if (d.getElementById("modalContainer")) return;
 
     mObj = d.getElementsByTagName("body")[0].appendChild(d.createElement("div"));
     mObj.id = "modalContainer";
@@ -278,9 +277,9 @@ function createCustomAlert(txt) {
 
     alertObj = mObj.appendChild(d.createElement("div"));
     alertObj.id = "alertBox";
-    if(d.all && !window.opera) alertObj.style.top = document.documentElement.scrollTop + "px";
-    alertObj.style.left = (d.documentElement.scrollWidth - alertObj.offsetWidth)/2 + "px";
-    alertObj.style.visiblity="visible";
+    if (d.all && !window.opera) alertObj.style.top = document.documentElement.scrollTop + "px";
+    alertObj.style.left = (d.documentElement.scrollWidth - alertObj.offsetWidth) / 2 + "px";
+    alertObj.style.visiblity = "visible";
 
     h1 = alertObj.appendChild(d.createElement("h1"));
     h1.appendChild(d.createTextNode(ALERT_TITLE));
@@ -294,7 +293,10 @@ function createCustomAlert(txt) {
     btn.appendChild(d.createTextNode(ALERT_BUTTON_TEXT));
     btn.href = "#";
     btn.focus();
-    btn.onclick = function() { removeCustomAlert();return false; }
+    btn.onclick = function () {
+        removeCustomAlert();
+        return false;
+    }
 
 
     alertObj.style.display = "block";
@@ -305,24 +307,25 @@ function removeCustomAlert() {
     document.getElementsByTagName("body")[0].removeChild(document.getElementById("modalContainer"));
     location.reload()
 }
-function ful(){
+
+function ful() {
     alert('Alert this pages');
 }
 
-function setClassStyle(className, attribute, value)  {
+function setClassStyle(className, attribute, value) {
     var a = document.getElementsByClassName(className);
     for (var i = 0; i < a.length; i++)
         a[i].style[attribute] = value;
 }
+
 //Use Add or Remove class instead of style
 function toggleNav() {
-    if (document.querySelector(".sidemenu").hasAttribute("is-open")){
+    if (document.querySelector(".sidemenu").hasAttribute("is-open")) {
         document.getElementsByClassName("sidemenu")[0].style.width = "50px";
         setClassStyle("text-wrapper", "display", "none");
         document.querySelector(".sidemenu").removeAttribute("is-open");
         document.querySelector(".sidemenu").setAttribute("is-closed", "");
-    }
-    else{
+    } else {
         document.getElementsByClassName("sidemenu")[0].style.width = "250px";
         setClassStyle("text-wrapper", "display", "initial");
         document.querySelector(".sidemenu").removeAttribute("is-closed");
@@ -335,5 +338,78 @@ function redireciona(page) {
 }
 
 function fecharModal(page) {
-        carregaMenu(`${page}`)
+    carregaMenu(`${page}`)
+}
+
+
+function abrirModalJsContato(id, inID, nomeModal, abrirModal = 'A', addEditDel, formulario) {
+    const formDados = document.getElementById(`${formulario}`)
+
+    const ModalInstacia = new bootstrap.Modal(document.getElementById(`${nomeModal}`))
+    if (abrirModal === 'A') {
+        ModalInstacia.show();
+        const inputid = document.getElementById(`${inID}`);
+        if (inID !== 'nao') {
+            inputid.value = id;
+        }
+
+        const submitHandler = function (event) {
+            event.preventDefault();
+
+            const form = event.target;
+            const formData = new FormData(form);
+            formData.append('controle', `${addEditDel}`)
+            if (inID !== 'nao') {
+                formData.append('id', `${id}`)
+            }
+            fetch('controle.php', {
+                method: 'POST', body: formData,
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    if (data.success) {
+                        ModalInstacia.hide();
+                        location.reload()
+                        carregaMenu("listarPessoa");
+                        location.reload()
+                        ModalInstacia.hide();
+                    } else {
+                        ModalInstacia.hide();
+                        location.reload()
+                        location.reload()
+                        ModalInstacia.hide();
+                        ModalInstacia.hide();
+                        carregaMenu("listarPessoa");
+                    }
+                })
+                .catch(error => {
+                    ModalInstacia.hide();
+                    location.reload()
+                    ModalInstacia.hide();
+                    carregaMenu("listarPessoa");
+                    console.error('Erro na requisição:', error);
+                });
+
+
+        }
+        formDados.addEventListener('submit', submitHandler);
+
+
+    } else {
+        location.reload()
+        ModalInstacia.hide();
+    }
+
+}
+
+
+function abrirModalJsProdutos(nomeModal, abrirModal = 'A') {
+    const ModalInstacia = new bootstrap.Modal(document.getElementById(`${nomeModal}`))
+    if (abrirModal === 'A') {
+        ModalInstacia.show();
+    } else {
+        location.reload()
+    }
+
 }

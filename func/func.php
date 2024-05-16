@@ -795,6 +795,28 @@ function addProduto($nome, $valor, $fotoName)
         $conn = null;
     }
 }
+function addContatoMenu($nome, $numero)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+
+
+        $stmt = $conn->prepare("INSERT INTO contato (nome, numero) VALUES (?, ?)");
+        $stmt->execute([$nome, $numero]);
+        $conn->commit();
+        if ($stmt->rowCount() > 0) {
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        }
+        return 'Vazio';
+    } catch (PDOException $e) {
+        echo 'Exception -> ' . $e->getMessage();
+        $conn->rollback();
+        return $e->getMessage();
+    } finally {
+        $conn = null;
+    }
+}
 
 function editAdm($nome, $senha, $email, $cpf, $idadm)
 {
@@ -958,3 +980,5 @@ function excContato($id)
         $conn = null;
     }
 }
+
+

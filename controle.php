@@ -26,5 +26,11 @@ if (!empty($controle) && isset($controle)) {
         include_once 'editContato.php';
     } else if ($controle == 'excContato') {
         include_once 'excContato.php';
+    } else if ($controle == 'addContatoMenu') {
+        include_once 'addContatoMenu.php';
+    } else if ($controle == 'editBanner') {
+        include_once 'editBanner.php';
+    } else if ($controle == 'listarBanner') {
+        include_once 'listarBanner.php';
     }
 }
