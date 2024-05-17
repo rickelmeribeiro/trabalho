@@ -132,8 +132,8 @@ include_once "./func/func.php";
                                         </div>
                                         <div class="col-md-8">
                                             <div class="card-body text-white">
-                                                <h5 class="card-title"><?php echo $nome ?></h5>
-                                                <p class="card-text"><?php echo $valor ?></p>
+                                                <h3 class="card-title"><?php echo $nome ?></h3>
+                                                <h4><p class="card-text">Valor: <span class="text-success"><?php echo $valor ?></span></p></h4>
                                             </div>
                                         </div>
                                     </div>
@@ -147,7 +147,7 @@ include_once "./func/func.php";
             }
         } else {
             ?>
-            <h1>NÃO POSSUI INFORMAÇÕES</h1>
+            <h1 class="text-center bg-danger text-white">NÃO POSSUI INFORMAÇÕES</h1>
             <?php
         }
         ?>
@@ -186,6 +186,18 @@ include_once "./func/func.php";
         </div>
     </div>
 </div>
+
+<footer class="footer text-white sim" style="height: 140px;">
+    <p>&copy; 2023 - Todos os direitos reservados</p>
+    <nav>
+        <ul class="ul">
+            <li class="li"><a class="a text-white" href="#">Termos de uso</a></li>
+            <li class="li"><a class="a text-white" href="#">Política de privacidade</a></li>
+            <li class="li"><a class="a text-white" href="#">Sobre nós</a></li>
+            <li class="li"><a class="a text-white" href="#">Contato</a></li>
+        </ul>
+    </nav>
+</footer>
 <script src="./func/func.js"></script>
 <script src="./func/mascara.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
