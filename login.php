@@ -18,7 +18,7 @@ if ($retornoValidar) {
     } else {
         $_SESSION['idadm'] = $retornoValidar->idadm;
         $_SESSION['nome'] = $retornoValidar->nome;
-        $_SESSION['email'] = $retornoValidar->email;
+        $_SESSION['foto'] = $retornoValidar->foto;
         echo json_encode(['success' => true, 'message' => "Logado com sucesso!"]);
     }
 } else {

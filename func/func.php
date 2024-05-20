@@ -727,15 +727,15 @@ function listarGeral($campos, $tabela)
     }
 }
 
-function addAdm($nome, $senha, $email, $cpf)
+function addAdm($nome, $senha, $email, $cpf, $foto)
 {
     $conn = conectar();
     try {
         $conn->beginTransaction();
 
 
-        $stmt = $conn->prepare("INSERT INTO adm (nome, senha, email, cpf) VALUES (?, ?, ?, ?)");
-        $stmt->execute([$nome, $senha, $email, $cpf]);
+        $stmt = $conn->prepare("INSERT INTO adm (nome, senha, email, cpf, foto) VALUES (?, ?, ?, ?, ?)");
+        $stmt->execute([$nome, $senha, $email, $cpf, $foto]);
         $conn->commit();
         if ($stmt->rowCount() > 0) {
             return $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -818,14 +818,14 @@ function addContatoMenu($nome, $numero)
     }
 }
 
-function editAdm($nome, $senha, $email, $cpf, $idadm)
+function editAdm($nome, $senha, $email, $cpf, $idadm, $foto)
 {
     $conn = conectar();
     try {
         $conn->beginTransaction();
 
 
-        $sql = "UPDATE adm SET nome = :nome, senha = :senha, email = :email, cpf = :cpf WHERE idadm = :idadm";
+        $sql = "UPDATE adm SET nome = :nome, senha = :senha, email = :email, cpf = :cpf, foto = :foto WHERE idadm = :idadm";
         $stmt = $conn->prepare($sql);
 
 
@@ -833,6 +833,7 @@ function editAdm($nome, $senha, $email, $cpf, $idadm)
         $stmt->bindParam(':senha', $senha);
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':cpf', $cpf);
+        $stmt->bindParam(':foto', $foto);
         $stmt->bindParam(':idadm', $idadm);
 
         $stmt->execute();

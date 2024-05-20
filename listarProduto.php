@@ -25,7 +25,7 @@ include_once "./func/func.php";
             <div class="d-flex float-end align-items-center">
                 <button class="btn btn-md btnbonitoo botaoAddEvento" data-bs-toggle="modal"
                         data-bs-target="#ModalAddProduto"
-                        onclick="abrirModalJsCliente('nao','nao','ModalAddProduto','A','addProduto','frmAddProduto')">
+                        onclick="abrirModalJsProduto('nao','nao','ModalAddProduto','A','addProduto','frmAddProduto','nao','nao','nao','nao')">
                     Cadastrar Produto
                 </button>
             </div>
@@ -64,15 +64,15 @@ include_once "./func/func.php";
                                            value="<?php echo $id ?>">
                                     <button type="button" class="btn btn-primary rounded-1" data-bs-toggle="modal"
                                             data-bs-target="#ModalEditProduto"
-                                            onclick="abrirModalJsCliente('<?php echo $id ?>','id','ModalEditProduto','A','editProduto','frmEditProduto')">
+                                            onclick="abrirModalJsProduto('<?php echo $id ?>','id','ModalEditProduto','A','editProduto','frmEditProduto','<?php echo $nome?>','nome_produto_edit','<?php echo $valor?>','valor_produto_edit')">
                                         <span class="mdi mdi-database-edit"></span>
                                     </button>
                             </form>
-                            <form action="excProduto.php" method="post">
+                            <form>
                                 <input type="hidden" name="id" id="id"
                                        value="<?php echo $id ?>">
-                                <button type="submit"
-                                        onclick="abrirModalJsCliente('<?php echo $id ?>','id','nao','excProduto', 'nao')"
+                                <button type="button"
+                                        onclick="abrirModalJsProduto('<?php echo $id ?>','id','ModalExcProduto','A','excProduto','frmexcProduto','nao','nao','nao','nao')"
                                         class="btn btn-danger rounded-1"><span
                                         class="mdi mdi-database-remove"></span></button>
                             </form>

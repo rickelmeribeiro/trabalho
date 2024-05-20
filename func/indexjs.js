@@ -52,6 +52,7 @@ function fazerLogin() {
         .then((response) => response.json())
         .then((data) => {
             if (data.success) {
+                mostrarProcessando();
                 setTimeout(function () {
                     window.location.href = "dashboard.php";
                 }, 2000);
@@ -69,4 +70,32 @@ function fazerLogin() {
         .catch((error) => {
             console.error("Erro na requisição", error);
         });
+}
+
+function mostrarProcessando() {
+    var divFundoEscuro = document.createElement('div');
+    divFundoEscuro.id = 'fundoEscuro';
+    divFundoEscuro.style.position = 'fixed';
+    divFundoEscuro.style.top = '0';
+    divFundoEscuro.style.left = '0';
+    divFundoEscuro.style.width = '100%';
+    divFundoEscuro.style.height = '100%';
+    divFundoEscuro.style.backgroundColor = 'rgba(0,0,0,0.7)';
+    document.body.appendChild(divFundoEscuro);
+
+    var divProcessando = document.createElement("div");
+    divProcessando.id = "processandoDiv";
+    divProcessando.style.position = "fixed";
+    divProcessando.style.top = "50%";
+    divProcessando.style.left = "50%";
+    divProcessando.style.transform = "translate(-50%, -50%)";
+    divProcessando.innerHTML = '<img src="./img/loadin.gif" width="200" alt="Processando..." title="Processando...">';
+    document.body.appendChild(divProcessando);
+}
+
+function esconderProcessando() {
+    var divProcessando = document.getElementById("processandoDiv");
+    if (divProcessando) {
+        document.body.removeChild(divProcessando);
+    }
 }

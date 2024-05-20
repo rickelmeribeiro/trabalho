@@ -413,3 +413,161 @@ function abrirModalJsProdutos(nomeModal, abrirModal = 'A') {
     }
 
 }
+
+function abrirModalJsAdm(id, inID, nomeModal, abrirModal = 'A', addEditDel, formulario, idNome, inNome, idEmail, inEmail, idCpf, inCpf) {
+    const formDados = document.getElementById(`${formulario}`)
+
+    const ModalInstacia = new bootstrap.Modal(document.getElementById(`${nomeModal}`))
+    if (abrirModal === 'A') {
+        ModalInstacia.show();
+        const inputid = document.getElementById(`${inID}`);
+        if (inID !== 'nao') {
+            inputid.value = id;
+        }
+        const nome = document.getElementById(`${inNome}`);
+        if (inNome !== 'nao') {
+            nome.value = idNome;
+        }
+        const email = document.getElementById(`${inEmail}`);
+        if (inEmail !== 'nao') {
+            email.value = idEmail;
+        }
+        const cpf = document.getElementById(`${inCpf}`);
+        if (inCpf !== 'nao') {
+            cpf.value = idCpf;
+        }
+
+
+
+        const submitHandler = function (event) {
+            event.preventDefault();
+
+            const form = event.target;
+            const formData = new FormData(form);
+
+            const fileInput = document.getElementById('foto_adm');
+            formData.append('foto', fileInput.files[0]);
+
+            const fileInput2 = document.getElementById('foto_adm_edit');
+            formData.append('foto', fileInput2.files[0]);
+
+            formData.append('controle', `${addEditDel}`)
+            if (inID !== 'nao') {
+                formData.append('id', `${id}`)
+            }
+            fetch('controle.php', {
+                method: 'POST', body: formData,
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    if (data.success) {
+                        ModalInstacia.hide();
+                        location.reload()
+                        carregaMenu("listarPessoa");
+                        location.reload()
+                        ModalInstacia.hide();
+                    } else {
+                        ModalInstacia.hide();
+                        location.reload()
+                        location.reload()
+                        ModalInstacia.hide();
+                        ModalInstacia.hide();
+                        carregaMenu("listarPessoa");
+                    }
+                })
+                .catch(error => {
+                    ModalInstacia.hide();
+                    location.reload()
+                    ModalInstacia.hide();
+                    carregaMenu("listarPessoa");
+                    console.error('Erro na requisição:', error);
+                });
+
+
+        }
+        formDados.addEventListener('submit', submitHandler);
+
+
+    } else {
+        location.reload()
+        ModalInstacia.hide();
+    }
+
+}
+
+function abrirModalJsProduto(id, inID, nomeModal, abrirModal = 'A', addEditDel, formulario, idNome, inNome, idValor, inValor) {
+    const formDados = document.getElementById(`${formulario}`)
+
+    const ModalInstacia = new bootstrap.Modal(document.getElementById(`${nomeModal}`))
+    if (abrirModal === 'A') {
+        ModalInstacia.show();
+        const inputid = document.getElementById(`${inID}`);
+        if (inID !== 'nao') {
+            inputid.value = id;
+        }
+        const nome = document.getElementById(`${inNome}`);
+        if (inNome !== 'nao') {
+            nome.value = idNome;
+        }
+        const valor = document.getElementById(`${inValor}`);
+        if (inValor !== 'nao') {
+            valor.value = idValor;
+        }
+
+
+        const submitHandler = function (event) {
+            event.preventDefault();
+
+            const form = event.target;
+            const formData = new FormData(form);
+            const fileInput = document.getElementById('foto_produto');
+            formData.append('foto', fileInput.files[0]);
+
+            const fileInput2 = document.getElementById('foto_produto_edit');
+            formData.append('foto', fileInput2.files[0]);
+
+            formData.append('controle', `${addEditDel}`)
+            if (inID !== 'nao') {
+                formData.append('id', `${id}`)
+            }
+            fetch('controle.php', {
+                method: 'POST', body: formData,
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    if (data.success) {
+                        ModalInstacia.hide();
+                        location.reload()
+                        carregaMenu("listarPessoa");
+                        location.reload()
+                        ModalInstacia.hide();
+                    } else {
+                        ModalInstacia.hide();
+                        location.reload()
+                        location.reload()
+                        ModalInstacia.hide();
+                        ModalInstacia.hide();
+                        carregaMenu("listarPessoa");
+                    }
+                })
+                .catch(error => {
+                    ModalInstacia.hide();
+                    location.reload()
+                    ModalInstacia.hide();
+                    carregaMenu("listarPessoa");
+                    console.error('Erro na requisição:', error);
+                });
+
+
+        }
+        formDados.addEventListener('submit', submitHandler);
+
+
+    } else {
+        location.reload()
+        ModalInstacia.hide();
+    }
+
+}

@@ -24,7 +24,7 @@ include_once "./func/func.php";
 
             <div class="d-flex float-end align-items-center">
                 <button class="btn  btn-md btnbonitoo botaoAddEvento" data-bs-toggle="modal" data-bs-target="#ModalAddAdm"
-                        onclick="abrirModalJsCliente('nao','nao','ModalAddAdm','A','addAdm','frmAddAdm')">
+                        onclick="abrirModalJsAdm('nao','nao','ModalAddAdm','A','addAdm','frmAddAdm','nao','nao','nao','nao','nao','nao')">
                     Cadastrar Administrador
                 </button>
             </div>
@@ -43,13 +43,14 @@ include_once "./func/func.php";
             </thead>
             <tbody>
             <?php
-            $listarAdm = listarGeral('idadm, nome, senha, email, cpf', 'adm');
+            $listarAdm = listarGeral('idadm, nome, senha, email, cpf, foto', 'adm');
             if ($listarAdm) {
                 foreach ($listarAdm as $itemAdm) {
                     $idadm = $itemAdm->idadm;
                     $nome = $itemAdm->nome;
                     $email = $itemAdm->email;
                     $cpf = $itemAdm->cpf;
+                    $foto = $itemAdm->foto;
                     ?>
                     <tr>
                     <th scope="row"><?php echo $idadm ?></th>
@@ -63,15 +64,15 @@ include_once "./func/func.php";
                                        value="<?php echo $idadm ?>">
                                 <button type="button" class="btn btn-primary rounded-1" data-bs-toggle="modal"
                                         data-bs-target="#ModalEditAdm"
-                                        onclick="abrirModalJsCliente('<?php echo $idadm ?>','id','ModalEditAdm','A','editAdm','frmEditAdm')">
+                                        onclick="abrirModalJsAdm('<?php echo $idadm ?>','id','ModalEditAdm','A','editAdm','frmEditAdm','<?php echo $nome?>','nome_adm_edit','<?php echo $email?>', 'email_adm_edit','<?php echo $cpf?>','cpf_adm_edit')">
                                     <span class="mdi mdi-database-edit"></span>
                                 </button>
                         </form>
-                        <form action="excAdm.php" method="post">
+                        <form>
                             <input type="hidden" name="id" id="id"
                                    value="<?php echo $idadm ?>">
-                            <button type="submit"
-                                    onclick="abrirModalJsCliente('<?php echo $idadm ?>','id','nao','excAdm', 'nao')"
+                            <button type="button"
+                                    onclick="abrirModalJsAdm('<?php echo $idadm ?>','id','ModalExcAdm','A','excAdm','frmexcAdm','nao','nao','nao','nao','nao','nao')"
                                     class="btn btn-danger rounded-1"><span
                                         class="mdi mdi-database-remove"></span></button>
                         </form>
