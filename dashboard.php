@@ -71,7 +71,7 @@ if ($_SESSION['idadm']) {
     </div>
 </div>
 <div class="row">
-    <div class="col-2 bg-dark vh-100">
+    <div class="col-2 bg-dark vh-100" >
         <div class="container-fluid">
             <div class="card bg-dark text-white" style="width: 18rem;border: transparent">
                 <div class="mt-3 mb-2 value fontegrande pointerCursor hoverzinho"
@@ -187,7 +187,7 @@ if ($_SESSION['idadm']) {
                     <div class="mb-3">
                         <label for="foto_adm_edit" class="form-label">Foto:</label>
                         <input autocomplete="off" type="file" class="form-control"
-                               id="foto_adm_edit" name="foto_adm_edit">
+                               id="foto_adm_edit" name="foto_adm_edit" required>
                     </div>
                     <button type="submit" class="btn bg-dark text-white">Editar no Banco
                     </button>
@@ -321,8 +321,8 @@ if ($_SESSION['idadm']) {
                     </div>
                     <div class="mb-3">
                         <label for="numero_contato_edit" class="form-label">Número:</label>
-                        <input autocomplete="off" type="text" class="form-control phone" id="numero_contato_edit"
-                               name="numero_contato_edit"  required placeholder="(00) 00000-0000">
+                        <input autocomplete="off" class="form-control" id="numero_contato_edit"
+                               name="numero_contato_edit" required type="tel" maxlength="15" onkeyup="handlePhone(event)" placeholder="(00) 00000-0000">
                     </div>
                     <button type="submit" class="btn bg-dark text-white">Editar no Banco
                     </button>
