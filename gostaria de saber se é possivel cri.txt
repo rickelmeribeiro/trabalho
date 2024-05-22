@@ -1,0 +1,26 @@
+gostaria de saber se é possivel criar uma função de truncate table em php, por exemplo, tenho essa função para excluir dados, queria criar uma função tipo essa so que com truncate table
+
+function nome da funcao($campos
+{
+    $conn = conectar();
+    try {
+
+        $conn->beginTransaction();
+
+        $stmt = $conn->prepare("DELETE FROM nome da tabela");
+        $stmt->execute();
+        $conn->commit();
+
+        if ($stmt->rowCount() > 0) {
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        } else {
+            return 'Vazio';
+        }
+
+    } catch (PDOException $e) {
+        $conn->rollback();
+        return 'Exception -> ' . $e->getMessage();
+    } finally {
+        $conn = null;
+    }
+}
