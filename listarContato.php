@@ -62,15 +62,15 @@ include_once "./func/func.php";
                                            value="<?php echo $id ?>">
                                     <button type="button" class="btn btn-primary rounded-1" data-bs-toggle="modal"
                                             data-bs-target="#ModalEditContato"
-                                            onclick="abrirModalJsCliente('<?php echo $id ?>','id','ModalEditContato','A','editContato','frmEditContato')">
+                                            onclick="abrirModalJsContato('<?php echo $id ?>','id','ModalEditContato','A','editContato','frmEditContato','<?php echo $nome?>','nome_contato_edit','<?php echo $numero?>','numero_contato_edit')">
                                         <span class="mdi mdi-database-edit"></span>
                                     </button>
                             </form>
-                            <form action="excContato.php" method="post">
+                            <form>
                                 <input type="hidden" name="id" id="id"
                                        value="<?php echo $id ?>">
-                                <button type="submit"
-                                        onclick="abrirModalJsCliente('<?php echo $id ?>','id','nao','excContato', 'nao')"
+                                <button type="button"
+                                        onclick="abrirModalJsContato('<?php echo $id ?>','id','ModalExcContato','A','excContato','frmexcContato','nao','nao','nao','nao')"
                                         class="btn btn-danger rounded-1"><span
                                         class="mdi mdi-database-remove"></span></button>
                             </form>

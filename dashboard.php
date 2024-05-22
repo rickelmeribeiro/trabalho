@@ -289,8 +289,8 @@ if ($_SESSION['idadm']) {
                     </div>
                     <div class="mb-3">
                         <label for="numero_contato" class="form-label">Número:</label>
-                        <input autocomplete="off" type="text" class="form-control phone" id="numero_contato"
-                               name="numero_contato" maxlength="13" required placeholder="(00) 00000-0000">
+                        <input autocomplete="off" type="tel" maxlength="15" onkeyup="handlePhone(event)" class="form-control phone" id="numero_contato"
+                               name="numero_contato"  required placeholder="(00) 00000-0000">
                     </div>
                     <button type="submit" class="btn bg-dark text-white">Adicionar no Banco
                     </button>
@@ -322,7 +322,7 @@ if ($_SESSION['idadm']) {
                     <div class="mb-3">
                         <label for="numero_contato_edit" class="form-label">Número:</label>
                         <input autocomplete="off" type="text" class="form-control phone" id="numero_contato_edit"
-                               name="numero_contato_edit" maxlength="13" required placeholder="(00) 00000-0000">
+                               name="numero_contato_edit"  required placeholder="(00) 00000-0000">
                     </div>
                     <button type="submit" class="btn bg-dark text-white">Editar no Banco
                     </button>
@@ -382,6 +382,30 @@ if ($_SESSION['idadm']) {
     </div>
 </div>
 <!-- FIM MODAL EXCLUIR PRODUTO -->
+
+<!-- MODAL EXCLUIR CONTATO -->
+<div class="modal fade" id="ModalExcContato" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Deletar Contato</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" name="frmexcContato" id="frmexcContato">
+                    <h1>TEM CERTEZA DE QUE DESEJA EXCLUIR ESTE CONTATO?</h1>
+                    <br>
+
+                    <h4>AO CONCLUIR ESTA AÇÃO, NÃO SERÁ MAIS POSSÍVEL RECUPERAR OS DADOS!</h4>
+            </div>
+            <div class="modal-footer bg-danger">
+                <button type="submit" class="btn btn-dark">Excluir do Banco</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIM MODAL EXCLUIR CONTATO -->
 <script src="./func/func.js"></script>
 <script src="./func/mascara.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

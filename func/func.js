@@ -103,16 +103,18 @@ function fMascEx() {
     obj.value = masc(obj.value)
 }
 
-var behavior = function (val) {
-        return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
-    },
-    options = {
-        onKeyPress: function (val, e, field, options) {
-            field.mask(behavior.apply({}, arguments), options);
-        }
-    };
+const handlePhone = (event) => {
+    let input = event.target
+    input.value = phoneMask(input.value)
+}
 
-$('.phone').mask(behavior, options);
+const phoneMask = (value) => {
+    if (!value) return ""
+    value = value.replace(/\D/g,'')
+    value = value.replace(/(\d{2})(\d)/,"($1) $2")
+    value = value.replace(/(\d)(\d{4})$/,"$1-$2")
+    return value
+}
 
 function mCPF(cpf_adm) {
     cpf_adm = cpf_adm.replace(/\D/g, "")
@@ -342,68 +344,6 @@ function fecharModal(page) {
 }
 
 
-function abrirModalJsContato(id, inID, nomeModal, abrirModal = 'A', addEditDel, formulario) {
-    const formDados = document.getElementById(`${formulario}`)
-
-    const ModalInstacia = new bootstrap.Modal(document.getElementById(`${nomeModal}`))
-    if (abrirModal === 'A') {
-        ModalInstacia.show();
-        const inputid = document.getElementById(`${inID}`);
-        if (inID !== 'nao') {
-            inputid.value = id;
-        }
-
-        const submitHandler = function (event) {
-            event.preventDefault();
-
-            const form = event.target;
-            const formData = new FormData(form);
-            formData.append('controle', `${addEditDel}`)
-            if (inID !== 'nao') {
-                formData.append('id', `${id}`)
-            }
-            fetch('controle.php', {
-                method: 'POST', body: formData,
-            })
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data)
-                    if (data.success) {
-                        ModalInstacia.hide();
-                        location.reload()
-                        carregaMenu("listarPessoa");
-                        location.reload()
-                        ModalInstacia.hide();
-                    } else {
-                        ModalInstacia.hide();
-                        location.reload()
-                        location.reload()
-                        ModalInstacia.hide();
-                        ModalInstacia.hide();
-                        carregaMenu("listarPessoa");
-                    }
-                })
-                .catch(error => {
-                    ModalInstacia.hide();
-                    location.reload()
-                    ModalInstacia.hide();
-                    carregaMenu("listarPessoa");
-                    console.error('Erro na requisição:', error);
-                });
-
-
-        }
-        formDados.addEventListener('submit', submitHandler);
-
-
-    } else {
-        location.reload()
-        ModalInstacia.hide();
-    }
-
-}
-
-
 function abrirModalJsProdutos(nomeModal, abrirModal = 'A') {
     const ModalInstacia = new bootstrap.Modal(document.getElementById(`${nomeModal}`))
     if (abrirModal === 'A') {
@@ -526,6 +466,77 @@ function abrirModalJsProduto(id, inID, nomeModal, abrirModal = 'A', addEditDel, 
 
             const fileInput2 = document.getElementById('foto_produto_edit');
             formData.append('foto', fileInput2.files[0]);
+
+            formData.append('controle', `${addEditDel}`)
+            if (inID !== 'nao') {
+                formData.append('id', `${id}`)
+            }
+            fetch('controle.php', {
+                method: 'POST', body: formData,
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    if (data.success) {
+                        ModalInstacia.hide();
+                        location.reload()
+                        carregaMenu("listarPessoa");
+                        location.reload()
+                        ModalInstacia.hide();
+                    } else {
+                        ModalInstacia.hide();
+                        location.reload()
+                        location.reload()
+                        ModalInstacia.hide();
+                        ModalInstacia.hide();
+                        carregaMenu("listarPessoa");
+                    }
+                })
+                .catch(error => {
+                    ModalInstacia.hide();
+                    location.reload()
+                    ModalInstacia.hide();
+                    carregaMenu("listarPessoa");
+                    console.error('Erro na requisição:', error);
+                });
+
+
+        }
+        formDados.addEventListener('submit', submitHandler);
+
+
+    } else {
+        location.reload()
+        ModalInstacia.hide();
+    }
+
+}
+
+function abrirModalJsContato(id, inID, nomeModal, abrirModal = 'A', addEditDel, formulario, idNome, inNome, idNumero, inNumero) {
+    const formDados = document.getElementById(`${formulario}`)
+
+    const ModalInstacia = new bootstrap.Modal(document.getElementById(`${nomeModal}`))
+    if (abrirModal === 'A') {
+        ModalInstacia.show();
+        const inputid = document.getElementById(`${inID}`);
+        if (inID !== 'nao') {
+            inputid.value = id;
+        }
+        const nome = document.getElementById(`${inNome}`);
+        if (inNome !== 'nao') {
+            nome.value = idNome;
+        }
+        const numero = document.getElementById(`${inNumero}`);
+        if (inNumero !== 'nao') {
+            numero.value = idNumero;
+        }
+
+
+        const submitHandler = function (event) {
+            event.preventDefault();
+
+            const form = event.target;
+            const formData = new FormData(form);
 
             formData.append('controle', `${addEditDel}`)
             if (inID !== 'nao') {

@@ -147,7 +147,7 @@ include_once "./func/func.php";
             }
         } else {
             ?>
-            <h1 class="text-center bg-danger text-white">NÃO POSSUI INFORMAÇÕES</h1>
+            <h1 class="text-center bg-danger text-white">NÃO POSSUI PRODUTOS!</h1>
             <?php
         }
         ?>
