@@ -1,26 +1,28 @@
-gostaria de saber se é possivel criar uma função de truncate table em php, por exemplo, tenho essa função para excluir dados, queria criar uma função tipo essa so que com truncate table
-
-function nome da funcao($campos
+function truncateTable($tableName)
 {
-    $conn = conectar();
+    $conn = conectar(); // Supondo que a função conectar() já esteja definida e conecte ao banco de dados
     try {
-
+        // Começando a transação
         $conn->beginTransaction();
 
-        $stmt = $conn->prepare("DELETE FROM nome da tabela");
+        // Preparando a instrução TRUNCATE TABLE
+        $stmt = $conn->prepare("TRUNCATE TABLE $tableName");
+
+        // Executando a instrução
         $stmt->execute();
+
+        // Comitando a transação
         $conn->commit();
 
-        if ($stmt->rowCount() > 0) {
-            return $stmt->fetchAll(PDO::FETCH_OBJ);
-        } else {
-            return 'Vazio';
-        }
+        // Retornando uma mensagem de sucesso
+        return 'Tabela truncada com sucesso.';
 
     } catch (PDOException $e) {
+        // Em caso de erro, desfazendo a transação
         $conn->rollback();
         return 'Exception -> ' . $e->getMessage();
     } finally {
+        // Fechando a conexão
         $conn = null;
     }
 }
