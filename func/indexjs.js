@@ -52,15 +52,18 @@ function fazerLogin() {
         .then((response) => response.json())
         .then((data) => {
             if (data.success) {
-                mostrarProcessando();
-                setTimeout(function () {
-                    window.location.href = "dashboard.php";
-                }, 2000);
+
                 // alert(data.message);
                 alertlog.classList.remove("erroBonito");
                 alertlog.classList.add("acertoBonito");
                 alertlog.innerHTML = data.message;
                 alertlog.style.display = "block";
+                setTimeout(function (){
+                    mostrarProcessando();
+                    }, 900);
+                setTimeout(function () {
+                    window.location.href = "dashboard.php";
+                }, 4000);
             } else {
                 alertlog.style.display = "block";
                 alertlog.innerHTML = data.message;

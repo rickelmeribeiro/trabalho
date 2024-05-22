@@ -44,9 +44,7 @@ include_once "./func/func.php";
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     </ul>
                     <button class="button"
-                            data-bs-toggle="modal"
-                            data-bs-target="#ModalContatoMenu"
-                            onclick="abrirModalJsContato('nao','nao','ModalContatoMenu','A','addContatoMenu','frmContatoMenu')">
+                            onclick="abrirModalJsContato('nao','nao','ModalContatoMenu','A','addContatoMenu','frmContatoMenu','nao','nao','nao','nao')">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                             <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -175,8 +173,8 @@ include_once "./func/func.php";
                     </div>
                     <div class="mb-3">
                         <label for="numero_contato_menu" class="form-label">Número:</label>
-                        <input autocomplete="off" type="text" class="form-control phone" id="numero_contato_menu"
-                               name="numero_contato_menu" maxlength="13" required placeholder="(00) 00000-0000">
+                        <input autocomplete="off" class="form-control" id="numero_contato_menu"
+                               name="numero_contato_menu" type="tel" maxlength="15" onkeyup="handlePhone(event)" required placeholder="(00) 00000-0000">
                     </div>
                     <button type="submit" class="btn bg-dark text-white">Adicionar Contato
                     </button>
@@ -186,6 +184,7 @@ include_once "./func/func.php";
         </div>
     </div>
 </div>
+
 
 <footer class="footer text-white sim" style="height: 140px;">
     <p>&copy; 2023 - Todos os direitos reservados</p>
