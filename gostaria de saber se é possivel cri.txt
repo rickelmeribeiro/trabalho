@@ -1,0 +1,28 @@
+function truncateTable($tableName)
+{
+    $conn = conectar(); // Supondo que a função conectar() já esteja definida e conecte ao banco de dados
+    try {
+        // Começando a transação
+        $conn->beginTransaction();
+
+        // Preparando a instrução TRUNCATE TABLE
+        $stmt = $conn->prepare("TRUNCATE TABLE $tableName");
+
+        // Executando a instrução
+        $stmt->execute();
+
+        // Comitando a transação
+        $conn->commit();
+
+        // Retornando uma mensagem de sucesso
+        return 'Tabela truncada com sucesso.';
+
+    } catch (PDOException $e) {
+        // Em caso de erro, desfazendo a transação
+        $conn->rollback();
+        return 'Exception -> ' . $e->getMessage();
+    } finally {
+        // Fechando a conexão
+        $conn = null;
+    }
+}
