@@ -15,28 +15,34 @@ include_once "./func/func.php";
     <link rel="stylesheet" type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css"
           &gt;>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css'>
     <link rel="stylesheet" type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css">
-
+    <link rel="shortcut icon" type="imagex/png" href="./img/icon.ico">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
     <script type='text/javascript' src='//code.jquery.com/jquery-compat-git.js'></script>
     <script type='text/javascript' src='//igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js'></script>
 </head>
-<body style="background-color: #482A50">
+<body style="background-color: #FBFAF2">
 
 
 <div class="row">
     <div class="col-12">
-        <nav class="navbar navbar-expand-lg" style="background-color: #290f30">
+        <nav class="navbar navbar-expand-lg" style="background-color:
+#342c2c">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
                     <nav class="navbar navbar-expand-lg">
                         <button class="button_sair fim text-white" type="button" onclick="redireciona('index.php')">
                             Sair
                         </button>
+                        <span style="color: #342c2c">................................................................................;...........................................................</span>
+                        <img src="./img/logo.png" alt="" class="empurrapradireita" width="25%">
                     </nav>
                 </a>
 
@@ -62,38 +68,46 @@ include_once "./func/func.php";
 </div>
 <div class="row">
     <div class="col-12">
+        <?php
+        $listarBanner = listarGeral('*', 'banner');
+        if ($listarBanner) {
+        foreach ($listarBanner
+
+        as $banner) {
+        $foto1 = $banner->foto1;
+        $foto2 = $banner->foto2;
+        $foto3 = $banner->foto3;
+        ?>
         <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="./img/banner1.png" class="d-block w-100" alt="BANNER" title="BANNER">
+                    <img src="./img/<?php echo $foto1 ?>" id="banner1" class="d-block w-100" alt="" title="<?php echo $foto1?>">
                 </div>
                 <div class="carousel-item">
-                    <img src="./img/banner2.png" class="d-block w-100" alt="BANNER" title="BANNER">
+                    <img src="./img/<?php echo $foto2 ?>" class="d-block w-100" alt="BANNER" title="BANNER">
                 </div>
                 <div class="carousel-item">
-                    <img src="./img/banner3.png" class="d-block w-100" alt="BANNER" title="BANNER">
+                    <img src="./img/<?php echo $foto3 ?>" class="d-block w-100" alt="BANNER" title="BANNER">
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
-                    data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
-                    data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+
         </div>
     </div>
 </div>
-
+<?php
+}
+} else {
+    ?>
+    <h1>NÃO POSSUIR BANNER!</h1>
+    <?php
+}
+?>
 
 <div class="container">
     <div class="row mt-2">
 
         <?php
-        $listarProdutos = listarGeral('nome, valor, foto', 'produto');
+        $listarProdutos = listarGeral('nome, valor, foto, descricao', 'produto');
         if ($listarProdutos) {
             $cont = 1;
             foreach ($listarProdutos
@@ -102,9 +116,11 @@ include_once "./func/func.php";
                 $nome = $produto->nome;
                 $valor = $produto->valor;
                 $foto = $produto->foto;
+                $descricao = $produto->descricao;
                 ?>
                 <div class="col-md-4 d-flex">
-                    <div class="cards mt-1 mb-5" data-bs-toggle="modal"
+                    <div class="cards mt-1 mb-5" style="background-color: #E5E4E2;border: 1px wheat solid;
+" data-bs-toggle="modal"
                          onclick="abrirModalJsProdutos('ModalRoupa<?php echo $cont ?>', 'A');">
                         <img src="./img/<?php echo $foto ?>" class="w-100">
                     </div>
@@ -114,24 +130,28 @@ include_once "./func/func.php";
                      aria-labelledby="exampleModalLabel"
                      aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header text-white cabessote">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel"><?php echo $nome ?></h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        onclick="redireciona('listarMenu.php')"
-                                        aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body corpao">
-                                <div class="card corpao linhaa mb-3 w-100">
-                                    <div class="row g-0">
-                                        <div class="col-md-4" style="border-right: 1px solid white">
+                        <div class="modal-content rounded-5">
+                            <div class="modal-body corpao rounded-5 pb-0"
+                                 style="border-radius: 80px;border: 1px solid wheat">
+                                <div class="card corpao mb-3 w-100" style="border: 0px solid black;border-radius: 30px">
+                                    <div class="row g-0 rounded-5" style="background-color: #E5E4E2;">
+                                        <div class="col-md-4 ">
                                             <img src="./img/<?php echo $foto ?>" class="img-fluid rounded-start"
                                                  alt="...">
                                         </div>
                                         <div class="col-md-8">
-                                            <div class="card-body text-white">
-                                                <h3 class="card-title"><?php echo $nome ?></h3>
-                                                <h4><p class="card-text">Valor: <span class="text-success"><?php echo $valor ?></span></p></h4>
+                                            <div class="card-body text-dark">
+                                                <h2 class="card-title fontezinha"><?php echo $nome ?></h2>
+                                                <h3><p class="card-text fontezinha">Descrição: <span
+                                                                class="fontezinha"><?php echo $descricao ?></span>
+                                                    </p>
+                                                </h3>
+                                                <br>
+                                                <h4><p class="card-text fontezinha">Valor: <span
+                                                                class="text-success"><?php echo $valor ?></span></p>
+                                                </h4>
+                                                <button style="margin-left: 380px" class="btn btn-success">Comprar
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -156,11 +176,8 @@ include_once "./func/func.php";
 <div class="modal fade" id="ModalContatoMenu" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header bg-dark text-white">
+            <div class="modal-header text-white" style="background-color: #342C2C">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Adicionar Contato</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                        onclick="redireciona('listarMenu.php')"
-                        aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form method="post" name="frmContatoMenu" id="frmContatoMenu" action="#">
@@ -174,9 +191,10 @@ include_once "./func/func.php";
                     <div class="mb-3">
                         <label for="numero_contato_menu" class="form-label">Número:</label>
                         <input autocomplete="off" class="form-control" id="numero_contato_menu"
-                               name="numero_contato_menu" type="tel" maxlength="15" onkeyup="handlePhone(event)" required placeholder="(00) 00000-0000">
+                               name="numero_contato_menu" type="tel" maxlength="15" onkeyup="handlePhone(event)"
+                               required placeholder="(00) 00000-0000">
                     </div>
-                    <button type="submit" class="btn bg-dark text-white">Adicionar Contato
+                    <button type="submit" class="btn text-white" style="background-color: #342C2C">Adicionar Contato
                     </button>
                 </form>
             </div>
@@ -187,7 +205,7 @@ include_once "./func/func.php";
 
 
 <footer class="footer text-white sim" style="height: 140px;">
-    <p>&copy; 2023 - Todos os direitos reservados</p>
+    <p>&copy; 2024 - Todos os direitos reservados</p>
     <nav>
         <ul class="ul">
             <li class="li"><a class="a text-white" href="#">Termos de uso</a></li>

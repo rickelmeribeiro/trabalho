@@ -31,7 +31,7 @@ include_once "./func/func.php";
         </div>
     </div>
     <div class="card-body">
-        <table class="containers text-white">
+        <table class="containers text-white rounded-4">
             <thead>
             <tr>
                 <th scope="col" width="5%">#</th>
@@ -62,7 +62,7 @@ include_once "./func/func.php";
                             <div class="btn-group btn-sm" role="group" aria-label="Basic example">
                                 <input type="hidden" id="id" name="id"
                                        value="<?php echo $idadm ?>">
-                                <button type="button" class="btn btn-primary rounded-1" data-bs-toggle="modal"
+                                <button type="button" class="btn btn-primary rounded-1 " data-bs-toggle="modal"
                                         data-bs-target="#ModalEditAdm"
                                         onclick="abrirModalJsAdm('<?php echo $idadm ?>','id','ModalEditAdm','A','editAdm','frmEditAdm','<?php echo $nome?>','nome_adm_edit','<?php echo $email?>', 'email_adm_edit','<?php echo $cpf?>','cpf_adm_edit')">
                                     <span class="mdi mdi-database-edit"></span>

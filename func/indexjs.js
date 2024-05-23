@@ -1,4 +1,3 @@
-
 function mostrarsenha() {
     var inputPass = document.getElementById('senha');
     var iconeOlho = document.getElementById('iconeOlho');
@@ -19,6 +18,7 @@ function mostrarsenha() {
 function fazerLogin() {
     var email = document.getElementById("email").value;
     var senha = document.getElementById("senha").value;
+
     var alertlog = document.getElementById("alertlog");
 
     if (email === "") {
@@ -58,9 +58,9 @@ function fazerLogin() {
                 alertlog.classList.add("acertoBonito");
                 alertlog.innerHTML = data.message;
                 alertlog.style.display = "block";
-                setTimeout(function (){
+                setTimeout(function () {
                     mostrarProcessando();
-                    }, 900);
+                }, 900);
                 setTimeout(function () {
                     window.location.href = "dashboard.php";
                 }, 4000);
@@ -102,3 +102,14 @@ function esconderProcessando() {
         document.body.removeChild(divProcessando);
     }
 }
+
+function btnEnter() {
+}
+
+    document.getElementById('senha').addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            document.getElementById('btn-entere').click();
+        }
+    });
+
+

@@ -356,6 +356,8 @@ function abrirModalJsProdutos(nomeModal, abrirModal = 'A') {
 
 function abrirModalJsAdm(id, inID, nomeModal, abrirModal = 'A', addEditDel, formulario, idNome, inNome, idEmail, inEmail, idCpf, inCpf) {
     const formDados = document.getElementById(`${formulario}`)
+    var alertlog = document.getElementById("alertlog");
+
 
     const ModalInstacia = new bootstrap.Modal(document.getElementById(`${nomeModal}`))
     if (abrirModal === 'A') {
@@ -402,12 +404,18 @@ function abrirModalJsAdm(id, inID, nomeModal, abrirModal = 'A', addEditDel, form
                 .then(data => {
                     console.log(data)
                     if (data.success) {
+                        alertlog.classList.remove("erroBonito");
+                        alertlog.classList.add("acertoBonito");
+                        alertlog.innerHTML = data.message;
+                        alertlog.style.display = "block";
                         ModalInstacia.hide();
                         location.reload()
                         carregaMenu("listarPessoa");
                         location.reload()
                         ModalInstacia.hide();
                     } else {
+                        alertlog.style.display = "block";
+                        alertlog.innerHTML = data.message;
                         ModalInstacia.hide();
                         location.reload()
                         location.reload()
@@ -436,7 +444,7 @@ function abrirModalJsAdm(id, inID, nomeModal, abrirModal = 'A', addEditDel, form
 
 }
 
-function abrirModalJsProduto(id, inID, nomeModal, abrirModal = 'A', addEditDel, formulario, idNome, inNome, idValor, inValor) {
+function abrirModalJsProduto(id, inID, nomeModal, abrirModal = 'A', addEditDel, formulario, idNome, inNome, idValor, inValor, idDescricao, inDescricao) {
     const formDados = document.getElementById(`${formulario}`)
 
     const ModalInstacia = new bootstrap.Modal(document.getElementById(`${nomeModal}`))
@@ -453,6 +461,11 @@ function abrirModalJsProduto(id, inID, nomeModal, abrirModal = 'A', addEditDel, 
         const valor = document.getElementById(`${inValor}`);
         if (inValor !== 'nao') {
             valor.value = idValor;
+        }
+
+        const desc = document.getElementById(`${inDescricao}`);
+        if (inDescricao !== 'nao') {
+            desc.value = idDescricao;
         }
 
 
@@ -582,3 +595,4 @@ function abrirModalJsContato(id, inID, nomeModal, abrirModal = 'A', addEditDel, 
     }
 
 }
+

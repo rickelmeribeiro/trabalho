@@ -10,6 +10,7 @@ $Dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
 $nome = isset($Dados['nome_produto_edit']) ? addslashes($Dados['nome_produto_edit']) : '';
 $valor = isset($Dados['valor_produto_edit']) ? addslashes($Dados['valor_produto_edit']) : '';
+$descricao = isset($Dados['desc_produto_edit']) ? addslashes($Dados['desc_produto_edit']) : '';
 $id = isset($Dados['id']) ? addslashes($Dados['id']) : '';
 
 if (isset($_FILES['foto']) && $_FILES['foto']['error'] == UPLOAD_ERR_OK) {
@@ -20,7 +21,7 @@ if (isset($_FILES['foto']) && $_FILES['foto']['error'] == UPLOAD_ERR_OK) {
 
     if (move_uploaded_file($fotoTmpName, $uploadDir . '/' . $fotoPath)) {
 
-        $retornoInsert = editProduto($nome, $valor, $fotoPath, $id);
+        $retornoInsert = editProduto($nome, $valor, $fotoPath, $id, $descricao);
 
 
         if ($retornoInsert > 0) {

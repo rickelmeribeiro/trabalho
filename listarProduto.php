@@ -25,7 +25,7 @@ include_once "./func/func.php";
             <div class="d-flex float-end align-items-center">
                 <button class="btn btn-md btnbonitoo botaoAddEvento" data-bs-toggle="modal"
                         data-bs-target="#ModalAddProduto"
-                        onclick="abrirModalJsProduto('nao','nao','ModalAddProduto','A','addProduto','frmAddProduto','nao','nao','nao','nao')">
+                        onclick="abrirModalJsProduto('nao','nao','ModalAddProduto','A','addProduto','frmAddProduto','nao','nao','nao','nao','nao','nao')">
                     Cadastrar Produto
                 </button>
             </div>
@@ -39,6 +39,7 @@ include_once "./func/func.php";
                 <th scope="col" width="25%">Nome</th>
                 <th scope="col" width="20%">Valor</th>
                 <th scope="col" width="15%">Foto</th>
+                <th scope="col" width="15%">Descrição</th>
                 <th scope="col" width="20%">Ações</th>
             </tr>
             </thead>
@@ -51,12 +52,14 @@ include_once "./func/func.php";
                     $nome = $itemProduto->nome;
                     $valor = $itemProduto->valor;
                     $fotoName = $itemProduto->foto;
+                    $descricao = $itemProduto->descricao;
                     ?>
                     <tr>
                         <th scope="row"><?php echo $id ?></th>
                         <td><?php echo $nome ?></td>
                         <td><?php echo $valor?></td>
                         <td><img src="./img/<?php echo $fotoName?>" alt="<?php echo $nome?>" width="50%"> </td>
+                        <td><?php echo $descricao?></td>
                         <td>
                             <form>
                                 <div class="btn-group btn-sm" role="group" aria-label="Basic example">
@@ -64,7 +67,7 @@ include_once "./func/func.php";
                                            value="<?php echo $id ?>">
                                     <button type="button" class="btn btn-primary rounded-1" data-bs-toggle="modal"
                                             data-bs-target="#ModalEditProduto"
-                                            onclick="abrirModalJsProduto('<?php echo $id ?>','id','ModalEditProduto','A','editProduto','frmEditProduto','<?php echo $nome?>','nome_produto_edit','<?php echo $valor?>','valor_produto_edit')">
+                                            onclick="abrirModalJsProduto('<?php echo $id ?>','id','ModalEditProduto','A','editProduto','frmEditProduto','<?php echo $nome?>','nome_produto_edit','<?php echo $valor?>','valor_produto_edit','<?php echo $descricao?>','desc_produto_edit')">
                                         <span class="mdi mdi-database-edit"></span>
                                     </button>
                             </form>
@@ -72,7 +75,7 @@ include_once "./func/func.php";
                                 <input type="hidden" name="id" id="id"
                                        value="<?php echo $id ?>">
                                 <button type="button"
-                                        onclick="abrirModalJsProduto('<?php echo $id ?>','id','ModalExcProduto','A','excProduto','frmexcProduto','nao','nao','nao','nao')"
+                                        onclick="abrirModalJsProduto('<?php echo $id ?>','id','ModalExcProduto','A','excProduto','frmexcProduto','nao','nao','nao','nao','nao','nao')"
                                         class="btn btn-danger rounded-1"><span
                                         class="mdi mdi-database-remove"></span></button>
                             </form>

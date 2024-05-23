@@ -773,15 +773,15 @@ function addContato($nome, $numero)
     }
 }
 
-function addProduto($nome, $valor, $fotoName)
+function addProduto($nome, $valor, $fotoName, $descricao)
 {
     $conn = conectar();
     try {
         $conn->beginTransaction();
 
 
-        $stmt = $conn->prepare("INSERT INTO produto (nome, valor, foto) VALUES (?, ?, ?)");
-        $stmt->execute([$nome, $valor, $fotoName]);
+        $stmt = $conn->prepare("INSERT INTO produto (nome, valor, foto, descricao) VALUES (?, ?, ?, ?)");
+        $stmt->execute([$nome, $valor, $fotoName, $descricao]);
         $conn->commit();
         if ($stmt->rowCount() > 0) {
             return $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -877,14 +877,14 @@ function editContato($nome, $numero, $idcontato)
     }
 }
 
-function editProduto($nome, $valor, $fotoName, $idproduto)
+function editProduto($nome, $valor, $fotoName, $idproduto, $descricao)
 {
     $conn = conectar();
     try {
         $conn->beginTransaction();
 
 
-        $sql = "UPDATE produto SET nome = :nome, valor = :valor, foto = :foto WHERE idproduto = :idproduto";
+        $sql = "UPDATE produto SET nome = :nome, valor = :valor, foto = :foto, descricao = :descricao WHERE idproduto = :idproduto";
         $stmt = $conn->prepare($sql);
 
 
@@ -892,6 +892,7 @@ function editProduto($nome, $valor, $fotoName, $idproduto)
         $stmt->bindParam(':valor', $valor);
         $stmt->bindParam(':foto', $fotoName);
         $stmt->bindParam(':idproduto', $idproduto);
+        $stmt->bindParam(':descricao', $descricao);
 
         $stmt->execute();
         $conn->commit();

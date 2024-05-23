@@ -22,6 +22,8 @@ if ($_SESSION['idadm']) {
     <link rel="stylesheet" type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css"
           &gt;>
+    <link rel="shortcut icon" type="imagex/png" href="./img/icon.ico">
+
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css'>
     <link rel="stylesheet" type="text/css"
@@ -71,7 +73,7 @@ if ($_SESSION['idadm']) {
     </div>
 </div>
 <div class="row">
-    <div class="col-2 bg-dark vh-100" >
+    <div class="col-2 bg-dark vh-100">
         <div class="container-fluid">
             <div class="card bg-dark text-white" style="width: 18rem;border: transparent">
                 <div class="mt-3 mb-2 value fontegrande pointerCursor hoverzinho"
@@ -110,21 +112,23 @@ if ($_SESSION['idadm']) {
         <div class="modal-content">
             <div class="modal-header bg-dark text-white">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar Administrador</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="redireciona('dashboard.php')"
-                        aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form method="post" name="frmAddAdm" id="frmAddAdm" action="#">
+
                     <div class="mb-3">
                         <label for="nome_adm" class="form-label">Nome:</label>
                         <input autocomplete="off" type="text" class="form-control" id="nome_adm" name="nome_adm"
                                aria-describedby="emailHelp" required placeholder="Digite Seu Nome">
                     </div>
+
                     <div class="mb-3">
                         <label for="senha_adm" class="form-label">Senha:</label>
-                        <input autocomplete="off" type="password" class="form-control" id="senha_adm" name="senha_adm"
-                               required maxlength="8" placeholder="********">
+                        <input autocomplete="off" type="password" class="form-control" id="senha_adm"
+                               name="senha_adm"
+                               required maxlength="8" placeholder="••••••••••">
                     </div>
+
                     <div class="mb-3">
                         <label for="email_adm" class="form-label">Email:</label>
                         <input autocomplete="off" type="email" class="form-control" id="email_adm" name="email_adm"
@@ -141,6 +145,8 @@ if ($_SESSION['idadm']) {
                         <input autocomplete="off" type="file"
                                class="form-control" id="foto_adm" name="foto_adm" required>
                     </div>
+
+
                     <button type="submit" class="btn bg-dark text-white">Adicionar no Banco
                     </button>
                 </form>
@@ -157,8 +163,6 @@ if ($_SESSION['idadm']) {
         <div class="modal-content">
             <div class="modal-header bg-dark text-white">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Administrador</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="redireciona('dashboard.php')"
-                        aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form method="post" name="frmEditAdm" id="frmEditAdm" action="#">
@@ -205,8 +209,6 @@ if ($_SESSION['idadm']) {
         <div class="modal-content">
             <div class="modal-header bg-dark text-white">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Adicionar Produto</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="redireciona('dashboard.php')"
-                        aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form method="post" name="frmAddProduto" id="frmAddProduto" action="#">
@@ -214,6 +216,13 @@ if ($_SESSION['idadm']) {
                         <label for="nome_produto" class="form-label">Nome:</label>
                         <input autocomplete="off" type="text" class="form-control" id="nome_produto" name="nome_produto"
                                aria-describedby="emailHelp" required placeholder="Digite o Nome do Produto">
+                    </div>
+                    <div class="mb-3">
+                        <label for="desc_produto" class="form-label">Descrição:</label>
+                        <div class="form-floating">
+                            <textarea class="form-control" placeholder="Digite a Descrição do Produto"
+                                      name="desc_produto" id="desc_produto" style="height: 100px"></textarea>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="valor_produto" class="form-label">Valor:</label>
@@ -240,8 +249,6 @@ if ($_SESSION['idadm']) {
         <div class="modal-content">
             <div class="modal-header bg-dark text-white">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Produto</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="redireciona('dashboard.php')"
-                        aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form method="post" name="frmEditProduto" id="frmEditProduto" action="#">
@@ -250,6 +257,13 @@ if ($_SESSION['idadm']) {
                         <input autocomplete="off" type="text" class="form-control" id="nome_produto_edit"
                                name="nome_produto_edit"
                                aria-describedby="emailHelp" required placeholder="Digite o Nome do Produto">
+                    </div>
+                    <div class="mb-3">
+                        <label for="desc_produto_edit" class="form-label">Descrição:</label>
+                        <div class="form-floating">
+                            <textarea class="form-control" placeholder="Digite a Descrição do Produto"
+                                      name="desc_produto_edit" id="desc_produto_edit" style="height: 100px"></textarea>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="valor_produto_edit" class="form-label">Valor:</label>
@@ -277,8 +291,6 @@ if ($_SESSION['idadm']) {
         <div class="modal-content">
             <div class="modal-header bg-dark text-white">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Adicionar Contato</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="redireciona('dashboard.php')"
-                        aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form method="post" name="frmAddContato" id="frmAddContato" action="#">
@@ -289,8 +301,9 @@ if ($_SESSION['idadm']) {
                     </div>
                     <div class="mb-3">
                         <label for="numero_contato" class="form-label">Número:</label>
-                        <input autocomplete="off" type="tel" maxlength="15" onkeyup="handlePhone(event)" class="form-control phone" id="numero_contato"
-                               name="numero_contato"  required placeholder="(00) 00000-0000">
+                        <input autocomplete="off" type="tel" maxlength="15" onkeyup="handlePhone(event)"
+                               class="form-control phone" id="numero_contato"
+                               name="numero_contato" required placeholder="(00) 00000-0000">
                     </div>
                     <button type="submit" class="btn bg-dark text-white">Adicionar no Banco
                     </button>
@@ -308,8 +321,6 @@ if ($_SESSION['idadm']) {
         <div class="modal-content">
             <div class="modal-header bg-dark text-white">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Contato</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="redireciona('dashboard.php')"
-                        aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form method="post" name="frmEditContato" id="frmEditContato" action="#">
@@ -322,7 +333,8 @@ if ($_SESSION['idadm']) {
                     <div class="mb-3">
                         <label for="numero_contato_edit" class="form-label">Número:</label>
                         <input autocomplete="off" class="form-control" id="numero_contato_edit"
-                               name="numero_contato_edit" required type="tel" maxlength="15" onkeyup="handlePhone(event)" placeholder="(00) 00000-0000">
+                               name="numero_contato_edit" required type="tel" maxlength="15"
+                               onkeyup="handlePhone(event)" placeholder="(00) 00000-0000">
                     </div>
                     <button type="submit" class="btn bg-dark text-white">Editar no Banco
                     </button>
@@ -341,7 +353,6 @@ if ($_SESSION['idadm']) {
         <div class="modal-content">
             <div class="modal-header bg-danger text-white">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Deletar Administrador</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form method="post" name="frmexcAdm" id="frmexcAdm">
@@ -365,7 +376,6 @@ if ($_SESSION['idadm']) {
         <div class="modal-content">
             <div class="modal-header bg-danger text-white">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Deletar Produto</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form method="post" name="frmexcProduto" id="frmexcProduto">
@@ -389,7 +399,6 @@ if ($_SESSION['idadm']) {
         <div class="modal-content">
             <div class="modal-header bg-danger text-white">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Deletar Contato</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form method="post" name="frmexcContato" id="frmexcContato">

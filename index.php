@@ -9,8 +9,9 @@ include_once "./func/func.php";
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>Área de Login</title>
     <link rel="stylesheet" href="./css/indexcss.css">
+    <link rel="shortcut icon" type="imagex/png" href="./img/icon.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css"&gt;>
@@ -18,7 +19,7 @@ include_once "./func/func.php";
 </head>
 <body>
 
-<div class="login-box">
+<div class="login-box rounded-5">
     <h2 class="fontee text-dark">LOGIN <span class="mdi mdi-login"></span></h2>
     <form method="post" name="frmLogin" id="frmLogin">
         <div class="user-box">
@@ -42,7 +43,7 @@ include_once "./func/func.php";
         <br>
         <div class="erroBonito p-1 text-center" role="alert" id="alertlog" style="display: none;">
         </div>
-        <button style="background: transparent; border: transparent;" class="hoverrr text-dark" onclick="fazerLogin();"
+        <button style="background: transparent; border: transparent;" class="hoverrr text-dark" id="btn-entere" onclick="btnEnter();fazerLogin();"
                 type="button">
             <span></span>
             <span></span>
