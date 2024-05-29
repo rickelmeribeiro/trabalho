@@ -53,10 +53,10 @@ include_once "./func/func.php";
                     <i class="fas fa-lock"></i>
                 </div>
                 <div>
-                    <h5>Senha</h5>
+                    <h5>Senha (A senha precisa ter 8 dígitos!)</h5>
 
                     <input type="password" name="senha" id="senha" autocomplete="off" required class="placered input"
-                           maxlength="8" placeholder="A senha precisa ter 8 dígitos!">
+                           maxlength="8">
 
                     <button id="iconeOlho" type="button"
                             class="mdi mdi-eye"

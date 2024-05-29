@@ -63,10 +63,10 @@ include_once "./func/func.php";
             </div>
             <button type="button" class="btn btn-lg" onclick="fazerLogin();">Login</button>
             <a href="cadastro.php" style="background: transparent; border: transparent; box-shadow: none;"
-               onclick="redireciona('cadastro.php')">Não possui login? Cadastre-se</a>
+               >Não possui login? Cadastre-se</a>
             <br>
             <a href="loginAdm.php" style="background: transparent; border: transparent; box-shadow: none;"
-               onclick="redireciona('loginAdm.php')">Área dos Administradores</a>
+               >Área dos Administradores</a>
         </form>
     </div>
 </div>
