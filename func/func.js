@@ -14,6 +14,55 @@ function carregaMenu(page) {
 
 }
 
+function abrirModalJsBanner(id, inID, nomeModal, abrirModal = 'A', addEditDel, formulario) {
+    const formDados = document.getElementById(`${formulario}`)
+
+    const ModalInstacia = new bootstrap.Modal(document.getElementById(`${nomeModal}`))
+    if (abrirModal === 'A') {
+        ModalInstacia.show();
+
+        const submitHandler = function (event) {
+            event.preventDefault();
+
+            const form = event.target;
+            const formData = new FormData(form);
+
+            formData.append('controle', `${addEditDel}`)
+            fetch('controle.php', {
+                method: 'POST', body: formData,
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    if (data.success) {
+                        ModalInstacia.hide();
+                        carregaMenu("listarPessoa");
+                        location.reload()
+                    } else {
+                        ModalInstacia.hide();
+                        location.reload()
+                        carregaMenu("listarPessoa");
+                    }
+                })
+                .catch(error => {
+                    ModalInstacia.hide();
+                    location.reload()
+                    carregaMenu("listarPessoa");
+                    console.error('Erro na requisição:', error);
+                });
+
+
+        }
+        formDados.addEventListener('submit', submitHandler);
+
+
+    } else {
+        location.reload()
+        ModalInstacia.hide();
+    }
+
+}
+
 
 function abrirModalJsCliente(id, inID, nomeModal, abrirModal = 'A', addEditDel, formulario) {
     const formDados = document.getElementById(`${formulario}`)
@@ -596,3 +645,50 @@ function abrirModalJsContato(id, inID, nomeModal, abrirModal = 'A', addEditDel, 
 
 }
 
+function abrirModalJsPerfil(nomeModal, abrirModal = 'A', formulario) {
+    const formDados = document.getElementById(`${formulario}`)
+
+    const ModalInstacia = new bootstrap.Modal(document.getElementById(`${nomeModal}`))
+    if (abrirModal === 'A') {
+        ModalInstacia.show();
+
+        const submitHandler = function (event) {
+            event.preventDefault();
+
+            const form = event.target;
+            const formData = new FormData(form);
+
+            fetch('controle.php', {
+                method: 'POST', body: formData,
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    if (data.success) {
+                        ModalInstacia.hide();
+                        carregaMenu("listarPessoa");
+                        location.reload()
+                    } else {
+                        ModalInstacia.hide();
+                        location.reload()
+                        carregaMenu("listarPessoa");
+                    }
+                })
+                .catch(error => {
+                    ModalInstacia.hide();
+                    location.reload()
+                    carregaMenu("listarPessoa");
+                    console.error('Erro na requisição:', error);
+                });
+
+
+        }
+        formDados.addEventListener('submit', submitHandler);
+
+
+    } else {
+        location.reload()
+        ModalInstacia.hide();
+    }
+
+}

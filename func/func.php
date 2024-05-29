@@ -957,6 +957,29 @@ function excProduto($id)
         $conn = null;
     }
 }
+function addCliente($nome, $email, $senha, $cpf)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+
+
+        $stmt = $conn->prepare("INSERT INTO cliente (nome, email, senha, cpf) VALUES (?, ?, ?, ?)");
+        $stmt->execute([$nome, $email, $senha, $cpf,]);
+        $conn->commit();
+        if ($stmt->rowCount() > 0) {
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        }
+        return 'Vazio';
+    } catch (PDOException $e) {
+        echo 'Exception -> ' . $e->getMessage();
+        $conn->rollback();
+        return $e->getMessage();
+    } finally {
+        $conn = null;
+    }
+}
+
 function excContato($id)
 {
     $conn = conectar();

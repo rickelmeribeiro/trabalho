@@ -1,5 +1,4 @@
 <?php
-include_once "body.php";
 include_once "./config/constante.php";
 include_once "./config/conexao.php";
 include_once "./func/func.php";
@@ -9,10 +8,9 @@ include_once "./func/func.php";
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Área de Login</title>
+    <title>Área dos Administradores</title>
     <link rel="stylesheet" href="./css/indexcss.css">
     <link rel="shortcut icon" type="imagex/png" href="./img/icon.ico">
-    <link rel="stylesheet" href="./css/indexcss.css">
     <script src="https://kit.fontawesome.com/ab00d86059.js" crossorigin="anonymous"></script>
     <!--    <link rel="shortcut icon" type="imagex/png" href="./img/CAMINHO">-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -24,17 +22,13 @@ include_once "./func/func.php";
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css"&gt;>
-
 </head>
 <body>
 
 <div class="container meio">
     <div class="login-container">
         <form method="post" name="frmLogin" id="frmLogin">
-            <h2>Área de Login</h2>
+            <h2>Área ADM</h2>
             <div class="input-div one">
                 <div class="i">
                     <i class="fas fa-user"></i>
@@ -62,17 +56,11 @@ include_once "./func/func.php";
             <div class="erroBonito p-1 text-center" role="alert" id="alertlog" style="display: none;">
             </div>
             <button type="button" class="btn btn-lg" onclick="fazerLogin();">Login</button>
-            <a href="cadastro.php" style="background: transparent; border: transparent; box-shadow: none;"
-               onclick="redireciona('cadastro.php')">Não possui login? Cadastre-se</a>
-            <br>
-            <a href="loginAdm.php" style="background: transparent; border: transparent; box-shadow: none;"
-               onclick="redireciona('loginAdm.php')">Área dos Administradores</a>
         </form>
     </div>
 </div>
 
-
-<script src="./func/indexjs.js"></script>
+<script src="./func/indexAdm.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>

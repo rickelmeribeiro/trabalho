@@ -33,59 +33,6 @@ inputs.forEach(input => {
     input.addEventListener('blur', blurFunc);
 });
 
-function certo() {
-    alert('Usuário Cadastrado com Sucesso!');
-}
-
-function abrirModalJsBanner(id, inID, nomeModal, abrirModal = 'A', addEditDel, formulario) {
-    const formDados = document.getElementById(`${formulario}`)
-
-    const ModalInstacia = new bootstrap.Modal(document.getElementById(`${nomeModal}`))
-    if (abrirModal === 'A') {
-        ModalInstacia.show();
-
-        const submitHandler = function (event) {
-            event.preventDefault();
-
-            const form = event.target;
-            const formData = new FormData(form);
-
-            formData.append('controle', `${addEditDel}`)
-            fetch('controle.php', {
-                method: 'POST', body: formData,
-            })
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data)
-                    if (data.success) {
-                        ModalInstacia.hide();
-                        carregaMenu("listarPessoa");
-                        location.reload()
-                    } else {
-                        ModalInstacia.hide();
-                        location.reload()
-                        carregaMenu("listarPessoa");
-                    }
-                })
-                .catch(error => {
-                    ModalInstacia.hide();
-                    location.reload()
-                    carregaMenu("listarPessoa");
-                    console.error('Erro na requisição:', error);
-                });
-
-
-        }
-        formDados.addEventListener('submit', submitHandler);
-
-
-    } else {
-        location.reload()
-        ModalInstacia.hide();
-    }
-
-}
-
 function fazerLogin() {
     var email = document.getElementById("email").value;
     var senha = document.getElementById("senha").value;
@@ -109,7 +56,7 @@ function fazerLogin() {
     } else {
         alertlog.style.display = "none";
     }
-    fetch("login.php", {
+    fetch("loginAdm_back.php", {
         method: "POST",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -133,7 +80,7 @@ function fazerLogin() {
                     mostrarProcessando();
                 }, 900);
                 setTimeout(function () {
-                    window.location.href = "listarMenu.php";
+                    window.location.href = "dashboard.php";
                 }, 4000);
             } else {
                 alertlog.style.display = "block";
@@ -173,46 +120,3 @@ function esconderProcessando() {
         document.body.removeChild(divProcessando);
     }
 }
-
-function btnEnter() {
-}
-
-    document.getElementById('senha').addEventListener('keydown', function (event) {
-        if (event.key === 'Enter') {
-            document.getElementById('btn-entere').click();
-        }
-    });
-
-function ValidaCPF() {
-    var RegraValida = document.getElementById("cpf").value;
-    var cpfValido = /^(([0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2})|([0-9]{11}))$/;
-    if (cpfValido.test(RegraValida) === true) {
-        console.log("CPF Válido");
-    } else {
-        console.log("CPF Inválido");
-    }
-}
-
-function fMasc(objeto, mascara) {
-    obj = objeto
-    masc = mascara
-    setTimeout("fMascEx()", 1)
-}
-
-function fMascEx() {
-    obj.value = masc(obj.value)
-}
-
-function mCPF(cpf) {
-    cpf = cpf.replace(/\D/g, "")
-    cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2")
-    cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2")
-    cpf = cpf.replace(/(\d{3})(\d{1,2})$/, "$1-$2")
-    return cpf
-}
-
-if (document.getElementById("cpf")) {
-    document.getElementById("cpf");
-}
-
-

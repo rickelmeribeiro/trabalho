@@ -54,7 +54,7 @@ if ($_SESSION['idadm']) {
                             ?>
                             <span style="font-size: 150%;">ADM:<span
                                         class="text-success"><?php echo $nome ?></span></span>
-                            <img src="./img/<?php echo $foto ?>" class="rounded-5" width="5%">
+                            <img src="./img/<?php echo $foto ?>" style="cursor: pointer" onclick="abrirModalJsPerfil('ModalSairPerfil','A','frmsairPerfil');" class="rounded-5" width="5%">
                             <?php
                         } else {
                             echo 'FOTO NAO ENCONTRADA';
@@ -67,13 +67,12 @@ if ($_SESSION['idadm']) {
                 <?php
             }
             ?>
-            <span class="text-dark">..................................................................................................................................................................................................................................................................................................................................................................................................................................................</span>
-            <button class="button_sair fim text-white" type="button" onclick="redireciona('index.php')">Sair</button>
+
         </nav>
     </div>
 </div>
 <div class="row">
-    <div class="col-2 bg-dark vh-100">
+    <div class="col-2 bg-dark" style="min-height: 100vh">
         <div class="container-fluid">
             <div class="card bg-dark text-white" style="width: 18rem;border: transparent">
                 <div class="mt-3 mb-2 value fontegrande pointerCursor hoverzinho"
@@ -81,7 +80,7 @@ if ($_SESSION['idadm']) {
                     <i class="fas fa-braille"></i>
                     MENU
                 </div>
-                <div class="mt-3 mb-2 value fontegrande pointerCursor hoverzinho">
+                <div class="mt-3 mb-2 value fontegrande pointerCursor hoverzinho" onclick="carregaMenu('listarBanner')">
                     <i class="fas fa-bacon"></i>
                     BANNER
                 </div>
@@ -415,6 +414,58 @@ if ($_SESSION['idadm']) {
     </div>
 </div>
 <!-- FIM MODAL EXCLUIR CONTATO -->
+
+<!-- MODAL EDITAR BANNER-->
+<div class="modal fade" id="ModalEditBanner" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Alteração de Banner</h1>
+            </div>
+            <div class="modal-body">
+                <form method="post" name="frmeditBanner" id="frmeditBanner">
+                    <div class="mb-3">
+                        <label for="banner_foto1" class="form-label">Banner 1:</label>
+                        <input autocomplete="off" type="file" class="form-control" id="banner_foto1" name="banner_foto1"
+                        >
+                    </div>
+                    <div class="mb-3">
+                        <label for="banner_foto_2" class="form-label">Banner 2:</label>
+                        <input autocomplete="off" type="file" class="form-control" id="banner_foto2" name="banner_foto2"
+                        >
+                    </div>
+                    <div class="mb-3">
+                        <label for="banner_foto_3" class="form-label">Banner 3:</label>
+                        <input autocomplete="off" type="file" class="form-control" id="banner_foto3" name="banner_foto3"
+                        >
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-dark">Alterar</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- FIM MODAL EDITAR BANNER -->
+
+<!-- MODAL SAIR PERFIL -->
+<div class="modal fade" id="ModalSairPerfil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered text-center">
+        <div class="modal-content text-center">
+            <div class="modal-header bg-dark text-center text-white">
+                <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">LOGOUT</h1>
+            </div>
+            <div class="modal-body">
+                <h1>DESEJA FAZER LOGOUT?</h1>
+            </div>
+            <div class="modal-footer text-center">
+                    <button class="button_sair fim text-white" style="margin-right: 35%" type="button" onclick="redireciona('index.php')">Sair</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIM MODAL SAIR PERFIL -->
 <script src="./func/func.js"></script>
 <script src="./func/mascara.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
