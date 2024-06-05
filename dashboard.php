@@ -22,6 +22,7 @@ if ($_SESSION['idadm']) {
     <link rel="stylesheet" type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css"
           &gt;>
+    <link rel="stylesheet" href="./css/texte.css">
     <link rel="shortcut icon" type="imagex/png" href="./img/icon.ico">
 
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
@@ -54,7 +55,9 @@ if ($_SESSION['idadm']) {
                             ?>
                             <span style="font-size: 150%;">ADM:<span
                                         class="text-success"><?php echo $nome ?></span></span>
-                            <img src="./img/<?php echo $foto ?>" style="cursor: pointer" onclick="abrirModalJsPerfil('ModalSairPerfil','A','frmsairPerfil');" class="rounded-5" width="5%">
+                            <img src="./img/<?php echo $foto ?>" style="cursor: pointer;"
+                                 onclick="abrirModalJsPerfil('ModalSairPerfil','A','frmsairPerfil');" class="rounded-5"
+                                 width="5%">
                             <?php
                         } else {
                             echo 'FOTO NAO ENCONTRADA';
@@ -74,30 +77,13 @@ if ($_SESSION['idadm']) {
 <div class="row">
     <div class="col-2 bg-dark" style="min-height: 100vh">
         <div class="container-fluid">
-            <div class="card bg-dark text-white" style="width: 18rem;border: transparent">
-                <div class="mt-3 mb-2 value fontegrande pointerCursor hoverzinho"
-                     onclick="redireciona('listarMenu.php')">
-                    <i class="fas fa-braille"></i>
-                    MENU
-                </div>
-                <div class="mt-3 mb-2 value fontegrande pointerCursor hoverzinho" onclick="carregaMenu('listarBanner')">
-                    <i class="fas fa-bacon"></i>
-                    BANNER
-                </div>
-                <div class="mt-3 mb-2 value fontegrande pointerCursor hoverzinho"
-                     onclick="carregaMenu('listarProduto')">
-                    <i class="fas fa-cash-register"></i>
-                    PRODUTO
-                </div>
-                <div class="mt-3 mb-2 value fontegrande pointerCursor hoverzinho"
-                     onclick="carregaMenu('listarContato')">
-                    <i class="fas fa-tty"></i>
-                    CONTATO
-                </div>
-                <div class="mt-3 mb-2 value fontegrande pointerCursor hoverzinho" onclick="carregaMenu('listarAdm')">
-                    <i class="fas fa-address-card"></i>
-                    ADM
-                </div>
+            <div class="card bg-dark text-white" style=";border: transparent">
+
+                <button role="button" onclick="redireciona('listarMenu.php')" class="button-name mb-3 text-white"><b>SITE</b></button>
+                <button role="button" onclick="carregaMenu('listarBanner')" class="button-name mb-3"><i class="fas fa-bacon text-white"></i></button>
+                <button role="button" onclick="carregaMenu('listarProduto')" class="button-name mb-3"><i class="fas fa-cash-register text-white"></i></button>
+                <button role="button" onclick="carregaMenu('listarContato')" class="button-name mb-3"><i class="fas fa-tty text-white"></i></button>
+                <button role="button" onclick="carregaMenu('listarAdm')" class="button-name mb-3"><i class="fas fa-address-card text-white"></i></button>
             </div>
         </div>
     </div>
@@ -304,7 +290,7 @@ if ($_SESSION['idadm']) {
                                class="form-control phone" id="numero_contato"
                                name="numero_contato" required placeholder="(00) 00000-0000">
                     </div>
-                    <button type="submit" class="btn bg-dark text-white">Adicionar no Banco
+                    <button type="submit"  class="btn bg-dark text-white">Adicionar no Banco
                     </button>
                 </form>
             </div>
@@ -344,6 +330,9 @@ if ($_SESSION['idadm']) {
     </div>
 </div>
 <!-- FIM MODAL EDITAR CONTATO -->
+
+
+
 
 
 <!-- MODAL EXCLUIR ADM -->
@@ -460,12 +449,15 @@ if ($_SESSION['idadm']) {
                 <h1>DESEJA FAZER LOGOUT?</h1>
             </div>
             <div class="modal-footer text-center">
-                    <button class="button_sair fim text-white" style="margin-right: 35%" type="button" onclick="redireciona('index.php')">Sair</button>
+                <button class="button_sair fim text-white" style="margin-right: 35%" type="button"
+                        onclick="redireciona('index.php')">Sair
+                </button>
             </div>
         </div>
     </div>
 </div>
 <!-- FIM MODAL SAIR PERFIL -->
+
 <script src="./func/func.js"></script>
 <script src="./func/mascara.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

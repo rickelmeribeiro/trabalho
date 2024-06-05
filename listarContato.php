@@ -65,17 +65,43 @@ include_once "./func/func.php";
                                             onclick="abrirModalJsContato('<?php echo $id ?>','id','ModalEditContato','A','editContato','frmEditContato','<?php echo $nome?>','nome_contato_edit','<?php echo $numero?>','numero_contato_edit')">
                                         <span class="mdi mdi-database-edit"></span>
                                     </button>
+                                </div>
                             </form>
-                            <form>
+                            <form name="frmvermais" method="post" id="frmvermais">
                                 <input type="hidden" name="id" id="id"
                                        value="<?php echo $id ?>">
                                 <button type="button"
                                         onclick="abrirModalJsContato('<?php echo $id ?>','id','ModalExcContato','A','excContato','frmexcContato','nao','nao','nao','nao')"
                                         class="btn btn-danger rounded-1"><span
                                         class="mdi mdi-database-remove"></span></button>
+
+                                <button type="button" class="btn btn-primary rounded-0" data-bs-toggle="modal"
+                                        data-bs-target="#ModalVermais<?php echo $id?>">
+                                    VER
+                                </button>
+
                             </form>
+
                         </td>
                     </tr>
+                    <div class="modal fade" id="ModalVermais<?php echo $id ?>" tabindex="-1"
+                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+
+                                    <li> ID: <?php echo $id ?></li>
+                                    <li> NOME: <?php echo $nome ?></li>
+                                    <li> CPF: <?php echo $numero ?></li>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <?php
                 }
             } else {
@@ -96,4 +122,5 @@ include_once "./func/func.php";
         ?>
     </div>
 </div>
+
 <script src="./func/func.js"></script>

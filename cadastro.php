@@ -78,7 +78,7 @@ include_once "./func/func.php";
             </div>
             <div class="erroBonito p-1 text-center" role="alert" id="alertlog" style="display: none;">
             </div>
-            <button type="submit" onclick="certo();" class="btn btn-lg">Cadastro</button>
+            <button type="submit" class="btn btn-lg">Cadastro</button>
             <a href="index.php" style="background: transparent; border: transparent; box-shadow: none;"
                onclick="redireciona('index.php')">Já possui cadastro? Faça Login!</a>
 

@@ -159,9 +159,9 @@ const handlePhone = (event) => {
 
 const phoneMask = (value) => {
     if (!value) return ""
-    value = value.replace(/\D/g,'')
-    value = value.replace(/(\d{2})(\d)/,"($1) $2")
-    value = value.replace(/(\d)(\d{4})$/,"$1-$2")
+    value = value.replace(/\D/g, '')
+    value = value.replace(/(\d{2})(\d)/, "($1) $2")
+    value = value.replace(/(\d)(\d{4})$/, "$1-$2")
     return value
 }
 
@@ -429,7 +429,6 @@ function abrirModalJsAdm(id, inID, nomeModal, abrirModal = 'A', addEditDel, form
         }
 
 
-
         const submitHandler = function (event) {
             event.preventDefault();
 
@@ -613,23 +612,17 @@ function abrirModalJsContato(id, inID, nomeModal, abrirModal = 'A', addEditDel, 
                     if (data.success) {
                         ModalInstacia.hide();
                         location.reload()
-                        carregaMenu("listarPessoa");
-                        location.reload()
-                        ModalInstacia.hide();
+                        carregaMenu("listarContato");
                     } else {
                         ModalInstacia.hide();
                         location.reload()
-                        location.reload()
-                        ModalInstacia.hide();
-                        ModalInstacia.hide();
-                        carregaMenu("listarPessoa");
+                        carregaMenu("listarContato");
                     }
                 })
                 .catch(error => {
-                    ModalInstacia.hide();
                     location.reload()
                     ModalInstacia.hide();
-                    carregaMenu("listarPessoa");
+                    carregaMenu("listarContato");
                     console.error('Erro na requisição:', error);
                 });
 
@@ -641,6 +634,8 @@ function abrirModalJsContato(id, inID, nomeModal, abrirModal = 'A', addEditDel, 
     } else {
         location.reload()
         ModalInstacia.hide();
+        carregaMenu("listarContato");
+
     }
 
 }
@@ -692,3 +687,4 @@ function abrirModalJsPerfil(nomeModal, abrirModal = 'A', formulario) {
     }
 
 }
+
