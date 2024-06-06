@@ -167,37 +167,37 @@ include_once "./func/func.php";
     </div>
 </div>
 
-
-<div class="modal fade" id="ModalContatoMenu" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header text-white" style="background-color: #342C2C">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Adicionar Contato</h1>
-            </div>
-            <div class="modal-body">
-                <form method="post" name="frmContatoMenu" id="frmContatoMenu" action="#">
-                    <div class="mb-3">
-
-                        <label for="nome_contato_menu" class="form-label">Nome:</label>
-                        <input autocomplete="off" type="text" class="form-control" id="nome_contato_menu"
-                               name="nome_contato_menu"
-                               aria-describedby="emailHelp" required placeholder="Digite Seu Nome">
+        <div class="modal fade" id="ModalContatoMenu" tabindex="-1" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header text-white" style="background-color: #342C2C">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Adicionar Contato</h1>
                     </div>
-                    <div class="mb-3">
-                        <label for="numero_contato_menu" class="form-label">Número:</label>
-                        <input autocomplete="off" class="form-control" id="numero_contato_menu"
-                               name="numero_contato_menu" type="tel" maxlength="15" onkeyup="handlePhone(event)"
-                               required placeholder="(00) 00000-0000">
-                    </div>
-                    <button type="submit" class="btn text-white" style="background-color: #342C2C">Adicionar Contato
-                    </button>
-                </form>
-            </div>
+                    <div class="modal-body">
+                        <form method="post" name="frmContatoMenu" id="frmContatoMenu" action="#">
+                            <div class="mb-3">
 
+                                <label for="nome_contato_menu" class="form-label">Nome:</label>
+                                <input autocomplete="off" type="text" class="form-control" id="nome_contato_menu"
+                                       name="nome_contato_menu"
+                                       aria-describedby="emailHelp" required placeholder="Digite Seu Nome">
+                            </div>
+                            <div class="mb-3">
+                                <label for="numero_contato_menu" class="form-label">Número:</label>
+                                <input autocomplete="off" class="form-control" id="numero_contato_menu"
+                                       name="numero_contato_menu" type="tel" maxlength="15" onkeyup="handlePhone(event)"
+                                       required placeholder="(00) 00000-0000">
+                            </div>
+                            <button type="submit" class="btn text-white" style="background-color: #342C2C">Adicionar
+                                Contato
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-
 
 <footer class="footer text-white sim" style="height: 140px;margin-top: 0%">
     <p>&copy; 2024 - Todos os direitos reservados</p>

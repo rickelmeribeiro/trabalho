@@ -472,3 +472,10 @@
 .Btn:active {
     transform: translate(2px ,2px);
 }
+
+
+.placediferente::placeholder{
+    color: black !important;
+    font-weight: bold !important;
+    font-size: 100% !important;
+}

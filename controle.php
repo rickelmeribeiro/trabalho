@@ -32,5 +32,7 @@ if (!empty($controle) && isset($controle)) {
         include_once 'editBanner.php';
     } else if ($controle == 'listarBanner') {
         include_once 'listarBanner.php';
+    } else if ($controle == 'listarCliente') {
+        include_once 'listarCliente.php';
     }
 }

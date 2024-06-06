@@ -32,7 +32,7 @@ include_once "./func/func.php";
         </div>
     </div>
     <div class="card-body">
-        <table class="containers text-white">
+        <table class="containers text-white rounded-4">
             <thead>
             <tr>
                 <th scope="col" width="5%">#</th>
@@ -57,30 +57,68 @@ include_once "./func/func.php";
                     <tr>
                         <th scope="row"><?php echo $id ?></th>
                         <td><?php echo $nome ?></td>
-                        <td><?php echo $valor?></td>
-                        <td><img src="./img/<?php echo $fotoName?>" alt="<?php echo $nome?>" width="50%"> </td>
-                        <td><?php echo $descricao?></td>
+                        <td><?php echo $valor ?></td>
+                        <td><img src="./img/<?php echo $fotoName ?>" alt="<?php echo $nome ?>" width="50%"></td>
+                        <td><?php echo $descricao ?></td>
                         <td>
-                            <form>
-                                <div class="btn-group btn-sm" role="group" aria-label="Basic example">
-                                    <input type="hidden" id="id" name="id"
-                                           value="<?php echo $id ?>">
-                                    <button type="button" class="btn btn-primary rounded-1" data-bs-toggle="modal"
-                                            data-bs-target="#ModalEditProduto"
-                                            onclick="abrirModalJsProduto('<?php echo $id ?>','id','ModalEditProduto','A','editProduto','frmEditProduto','<?php echo $nome?>','nome_produto_edit','<?php echo $valor?>','valor_produto_edit','<?php echo $descricao?>','desc_produto_edit')">
-                                        <span class="mdi mdi-database-edit"></span>
-                                    </button>
-                            </form>
-                            <form>
-                                <input type="hidden" name="id" id="id"
-                                       value="<?php echo $id ?>">
-                                <button type="button"
-                                        onclick="abrirModalJsProduto('<?php echo $id ?>','id','ModalExcProduto','A','excProduto','frmexcProduto','nao','nao','nao','nao','nao','nao')"
-                                        class="btn btn-danger rounded-1"><span
-                                        class="mdi mdi-database-remove"></span></button>
-                            </form>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="btn-group btn-sm" role="group" aria-label="Basic example">
+                                        <div class="col-3">
+                                            <input type="hidden" id="id" name="id"
+                                                   value="<?php echo $id ?>">
+                                            <button type="button" class="btn btn-primary rounded-1"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#ModalEditProduto"
+                                                    onclick="abrirModalJsProduto('<?php echo $id ?>','id','ModalEditProduto','A','editProduto','frmEditProduto','<?php echo $nome ?>','nome_produto_edit','<?php echo $valor ?>','valor_produto_edit','<?php echo $descricao ?>','desc_produto_edit')">
+                                                <span class="mdi mdi-database-edit"></span>
+                                            </button>
+                                        </div>
+                                        <div class="col-3">
+                                            <button type="button" class="btn btn-warning rounded-1"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#ModalVermais<?php echo $id ?>">
+                                                <span class="mdi mdi-database-search text-dark"></span>
+                                            </button>
+                                        </div>
+                                        <div class="col-3">
+                                            <input type="hidden" name="id" id="id"
+                                                   value="<?php echo $id ?>">
+                                            <button type="button"
+                                                    onclick="abrirModalJsProduto('<?php echo $id ?>','id','ModalExcProduto','A','excProduto','frmexcProduto','nao','nao','nao','nao','nao','nao')"
+                                                    class="btn btn-danger rounded-1"><span
+                                                        class="mdi mdi-database-remove"></span></button>
+                                        </div>
+                                    </div>
+                                </div>
                         </td>
                     </tr>
+                    <div class="modal fade" id="ModalVermais<?php echo $id ?>" tabindex="-1"
+                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header bg-dark text-white">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Informações</h1>
+                                </div>
+                                <div class="modal-body"
+                                     style="display: flex;justify-content: center;align-items: center">
+                                    <ul>
+                                        <hr>
+                                        <li>ID: <span style="font-weight: bold"><?php echo $id?></span></li>
+                                        <hr>
+                                        <li>NOME: <span style="font-weight: bold"><?php echo $nome?></span></li>
+                                        <hr>
+                                        <li>VALOR: <span style="font-weight: bold"><?php echo $valor?></span></li>
+                                        <hr>
+                                        <li>FOTO: <img src="./img/<?php echo $fotoName?>" width="30%" alt="<?php echo $nome?>"></li>
+                                        <hr>
+                                        <li>DESCRIÇÃO: <span style="font-weight: bold"><?php echo $descricao?></span></li>
+                                        <hr>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <?php
                 }
             } else {

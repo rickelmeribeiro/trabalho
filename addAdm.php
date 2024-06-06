@@ -36,4 +36,5 @@ if (isset($_FILES['foto']) && $_FILES['foto']['error'] == UPLOAD_ERR_OK) {
 } else {
     echo json_encode(['success' => false, 'message' => "Deu ERRO NA FOTO"], JSON_THROW_ON_ERROR);
 }
+
 ?>
