@@ -10,6 +10,7 @@ include_once "./func/func.php";
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Área de Cadastro</title>
     <link rel="stylesheet" href="./css/indexcss.css">
+    <link rel="stylesheet" href="./css/style.css">
     <link rel="shortcut icon" type="imagex/png" href="./img/icon.ico">
     <script src="https://kit.fontawesome.com/ab00d86059.js" crossorigin="anonymous"></script>
     <!--    <link rel="shortcut icon" type="imagex/png" href="./img/CAMINHO">-->
@@ -73,7 +74,7 @@ include_once "./func/func.php";
                 <div>
 
                     <h5>CPF</h5>
-                    <input type="text" name="cpf" id="cpf" onkeydown="fMasc( this, mCPF );" maxlength="14"  autocomplete="off" required class="input cpf_adm semfocus">
+                    <input type="number" name="cpf" id="cpf" onkeydown="fMasc( this, mCPF );" maxlength="14"  autocomplete="off" required class="input cpf_adm semfocus">
                 </div>
             </div>
             <div class="erroBonito p-1 text-center" role="alert" id="alertlog" style="display: none;">
