@@ -233,7 +233,7 @@ if ($_SESSION['idadm']) {
                     </div>
                     <div class="mb-3">
                         <label for="valor_produto" class="form-label">Valor:</label>
-                        <input autocomplete="off" type="text" onkeyup="atacado(this);" class="form-control"
+                        <input autocomplete="off" type="number" onkeyup="atacado(this);" class="form-control"
                                id="valor_produto" name="valor_produto" required placeholder="0,00">
                     </div>
                     <div class="mb-3">

@@ -111,6 +111,8 @@ include_once "./func/func.php";
                                         <hr>
                                         <li>CPF: <span style="font-weight: bold"><?php echo $cpf?></span></li>
                                         <hr>
+                                        <li>FOTO: <span style="font-weight: bold"><img src="./img/<?php echo $foto?>" width="30%" style="border-radius: 50%" alt=""></span></li>
+                                        <hr>
                                     </ul>
                                 </div>
                             </div>

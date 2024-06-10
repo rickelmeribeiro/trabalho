@@ -74,7 +74,7 @@ include_once "./func/func.php";
                 <div>
 
                     <h5>CPF</h5>
-                    <input type="number" name="cpf" id="cpf" onkeydown="fMasc( this, mCPF );" maxlength="14"  autocomplete="off" required class="input cpf_adm semfocus">
+                    <input type="text" name="cpf" id="cpf" onkeydown="fMasc( this, mCPF );" maxlength="14"  autocomplete="off" required class="input cpf_adm semfocus">
                 </div>
             </div>
             <div class="erroBonito p-1 text-center" role="alert" id="alertlog" style="display: none;">
