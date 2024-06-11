@@ -6,6 +6,7 @@ include_once "./func/func.php";
 <!doctype html>
 <html lang="pt-br">
 <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Web Site</title>
@@ -46,7 +47,7 @@ include_once "./func/func.php";
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 </ul>
                 <button class="Btn"
-                        onclick="abrirModalJsContato('nao','nao','ModalContatoMenu','A','addContatoMenu','frmContatoMenu','nao','nao','nao','nao')">
+                        onclick="abrirModalJsContatoMenu('nao','nao','ModalContatoMenu','A','addContatoMenu','frmContatoMenu','nao','nao','nao','nao')">
 
                     <div class="sign">
                         <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
@@ -189,7 +190,7 @@ include_once "./func/func.php";
                                        name="numero_contato_menu" type="tel" maxlength="15" onkeyup="handlePhone(event)"
                                        required placeholder="(00) 00000-0000">
                             </div>
-                            <button type="submit" class="btn text-white" style="background-color: #342C2C">Adicionar
+                            <button type="submit" id="btn-cad-contato"   class="btn text-white" style="background-color: #342C2C">Adicionar
                                 Contato
                             </button>
                         </form>
@@ -198,6 +199,7 @@ include_once "./func/func.php";
                 </div>
             </div>
         </div>
+
 
 <footer class="footer text-white sim" style="height: 140px;margin-top: 0%">
     <p>&copy; 2024 - Todos os direitos reservados</p>
